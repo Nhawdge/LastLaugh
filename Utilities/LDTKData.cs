@@ -334,7 +334,7 @@ namespace QuickType.Map
         public object Regex { get; set; }
 
         [JsonPropertyName("acceptFileTypes")]
-        public string[] AcceptFileTypes { get; set; }
+        public object AcceptFileTypes { get; set; }
 
         [JsonPropertyName("defaultOverride")]
         public object DefaultOverride { get; set; }
@@ -836,7 +836,6 @@ namespace QuickType.Map
 
         public static implicit operator ValueUnion(string String) => new ValueUnion { String = String };
         public static implicit operator ValueUnion(ValueClass ValueClass) => new ValueUnion { ValueClass = ValueClass };
-        public bool IsNull => ValueClass == null && String == null;
     }
 
     public partial class LdtkData
@@ -871,8 +870,6 @@ namespace QuickType.Map
         {
             switch (reader.TokenType)
             {
-                case JsonTokenType.Null:
-                    return new ValueUnion { };
                 case JsonTokenType.String:
                     var stringValue = reader.GetString();
                     return new ValueUnion { String = stringValue };
@@ -885,11 +882,6 @@ namespace QuickType.Map
 
         public override void Write(Utf8JsonWriter writer, ValueUnion value, JsonSerializerOptions options)
         {
-            if (value.IsNull)
-            {
-                writer.WriteNullValue();
-                return;
-            }
             if (value.String != null)
             {
                 JsonSerializer.Serialize(writer, value.String, options);

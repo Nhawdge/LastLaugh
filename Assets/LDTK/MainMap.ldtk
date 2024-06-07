@@ -11,7 +11,7 @@
 	"iid": "96daf110-fec0-11ee-b2f3-27ec4f4d327e",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 22,
+	"nextUid": 23,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -362,11 +362,11 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "DialogTree",
+					"identifier": "DialogueKey",
 					"doc": null,
-					"__type": "FilePath",
-					"uid": 20,
-					"type": "F_Path",
+					"__type": "String",
+					"uid": 22,
+					"type": "F_String",
 					"isArray": false,
 					"canBeNull": true,
 					"arrayMinLength": null,
@@ -387,7 +387,7 @@
 					"min": null,
 					"max": null,
 					"regex": null,
-					"acceptFileTypes": [".json"],
+					"acceptFileTypes": null,
 					"defaultOverride": null,
 					"textLanguageMode": null,
 					"symmetricalRef": false,
@@ -725,7 +725,10 @@
 									"id": "V_String",
 									"params": ["Steve"]
 								}] },
-								{ "__identifier": "DialogTree", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 20, "realEditorValues": [] }
+								{ "__identifier": "DialogueKey", "__type": "String", "__value": "npc0", "__tile": null, "defUid": 22, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["npc0"]
+								}] }
 							],
 							"__worldX": 96,
 							"__worldY": 64

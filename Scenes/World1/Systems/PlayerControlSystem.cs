@@ -2,6 +2,7 @@
 using Arch.Core.Extensions;
 using LastLaugh.Extensions;
 using LastLaugh.Scenes.Components;
+using LastLaugh.Scenes.World1.Data;
 using LastLaugh.Utilities;
 using System.Numerics;
 
@@ -21,6 +22,11 @@ namespace LastLaugh.Scenes.World1.Systems
             //Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Top), 5, Color.Red);
             //Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Left), 5, Color.Red);
             //Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Right), 5, Color.Red);
+
+            if (Singleton.Instance.ActiveDialogue != null)
+            {
+                return;
+            }
 
             var force = Vector2.Zero;
 

@@ -18,6 +18,7 @@ namespace LastLaugh.Scenes.World1
                 Systems.Add(new CameraSystem());
                 Systems.Add(new PlayerControlSystem());
                 //Systems.Add(new MovementForceSystem());
+                Systems.Add(new DialogueSystem());
                 Systems.Add(new ToolTipSystem()); // Always last-ish plz
                 Systems.Add(new DoorwaySystem());
             });

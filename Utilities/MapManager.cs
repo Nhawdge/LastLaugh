@@ -157,20 +157,18 @@ namespace LastLaugh.Utilities
 
                     if (entity.Identifier == "NPC")
                     {
-                        var doorAt = entity.Px.ToVector2();
-                        //var door = new Doorway(doorAt);
-                        //var levelConnection = entity.FieldInstances.First(x => x.Identifier == "Destination");
+                        var position = entity.Px.ToVector2();
+                        
+                        var dialogueKeyRaw = entity.FieldInstances.First(x => x.Identifier == "DialogueKey");
+                        var dialogueKey = dialogueKeyRaw.Value.String;
 
-                        //if (LevelIdMap.TryGetValue(levelConnection.Value.LevelIid, out var id))
-                        //door.LevelId = id;
+                        var sprite = new Sprite(TextureKey.Player) { Position = position };
 
-                        //door.TargetEntityId = levelConnection.Value.EntityIid;
-
-                        var sprite = new Render(TextureKey.PortraitNpc1) { Position = doorAt };
+                        sprite.Play("merchant");
 
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
 
-                        world.Create(sprite, new UnitLayer());
+                        world.Create(sprite, new UnitLayer(), new Npc() { DialogueKey = dialogueKey });
                     }
                 }
 

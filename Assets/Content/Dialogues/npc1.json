@@ -1,0 +1,53 @@
+[
+  {
+    "Key": "npc0",
+    "Lines": [
+      {
+        "Speaker": "Merchant",
+        "Text": "Hi"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "What's up?",
+        "NextDialogueId": "npc1",
+        "RequiredKeys": [ "" ],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "Hi (Hidden)",
+        "NextDialogueId": "npc1-hidden",
+        "RequiredKeys": [ "" ],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "npc1",
+    "Lines": [
+      {
+        "Speaker": "player",
+        "Text": "hi"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Okay",
+        "NextDialogueId": "npc0",
+        "RequiredKeys": [],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "npc1-hidden",
+    "Lines": [
+      {
+        "Speaker": "merchant",
+        "Text": "hidden line"
+      }
+    ],
+    "Options": []
+  }
+]
+    
