@@ -11,7 +11,7 @@
 	"iid": "96daf110-fec0-11ee-b2f3-27ec4f4d327e",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 18,
+	"nextUid": 22,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -48,7 +48,7 @@
 			"uid": 14,
 			"doc": null,
 			"uiColor": null,
-			"gridSize": 16,
+			"gridSize": 8,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
 			"displayOpacity": 1,
@@ -289,6 +289,116 @@
 			"pivotX": 0,
 			"pivotY": 0,
 			"fieldDefs": []
+		},
+		{
+			"identifier": "NPC",
+			"uid": 18,
+			"tags": [],
+			"exportToToc": false,
+			"allowOutOfBounds": false,
+			"doc": null,
+			"width": 8,
+			"height": 8,
+			"resizableX": false,
+			"resizableY": false,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
+			"keepAspectRatio": false,
+			"tileOpacity": 1,
+			"fillOpacity": 0.08,
+			"lineOpacity": 0,
+			"hollow": false,
+			"color": "#EAD4AA",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 21,
+			"tileRenderMode": "FitInside",
+			"tileRect": { "tilesetUid": 21, "x": 40, "y": 40, "w": 8, "h": 8 },
+			"uiTileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": [
+				{
+					"identifier": "Name",
+					"doc": null,
+					"__type": "String",
+					"uid": 19,
+					"type": "F_String",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "DialogTree",
+					"doc": null,
+					"__type": "FilePath",
+					"uid": 20,
+					"type": "F_Path",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": [".json"],
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -488,6 +598,28 @@
 				"opaqueTiles": "010001111100000000000111110000000000011111000000000001011100000000000101110000000000011111000000000001111100000000000111110000000000011111000000000000000000000000000000111111110000000011111100000000001111100000000000111111110000000011111111000000001111111100000000100000000000000011111111000000001111111100000000110000000000000000000000000001111100000000000111110000000000000000000000000000000000000000000000000000000000000000000000",
 				"averageColors": "8853f324a963b963a963f643f222f753f753f74300000000000000000000000089638a63896489738a63f743f753f753f753f85300000000000000000000000088538953886488638a63f643f743f643f653f7430000000000000000000000003b7300003c844b843b73f5320000f543f643f53200000000000000000000000067430000785377437853f4320000f643f533f63200000000000000000000000039643a6339753a833c73f432f532f433f432f53200000000000000000000000059635963596359635963f642f642f642f642f6420000000000000000000000001c831c831c831c831c83f422f422f422f422f42200000000000000000000000077437853775478637953f533f632f543f542f64300000000000000000000000000000000000000000000000000000000000000000000000000000000000000001c851c852cc92cc93cc92cb85ed95ed9f322f322f554f554f665f443f875f8752aa72aa72a972a972aa72aa700000000f433f433f333f333f433f433000000002dd93ed93dd92dd93ed9000000000000f554f654f665f554f6640000000000001cc82dc92dc92ed92da73db73db73ec8f433f444f444f554f543f654f654f65429972aa82ba82bb82a973ba72ba83cb8f433f444f444f544f443f544f544f5442aa82ba82cb82cb92b972ba72ca82cb8f443f444f444f554f443f543f543f5443bc80000000000000000000000000000f55400000000000000000000000000008c977ca78da77db78aa87bb88bb67cb7f975f875fa85f975f786f776f885f8756c756c866d966da668a768a76ba56ba5f844f854f864f864f565f565f763f7746b735c95000000000000000000000000f743f7530000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b963d96389639963a963f853f963f743f753f85300000000000000000000000038533853285328532853f322f422f322f322f32200000000000000000000000089739a7469637a74896399639a7498539963996300000000000000000000000000000000000000000000000000000000000000000000000000000000000000002cc92cc900003dc93dc9000000000000000000000000000000000000000000002cc92cc900003dc93dc900000000000000000000000000000000000000000000"
 			}
+		},
+		{
+			"__cWid": 13,
+			"__cHei": 6,
+			"identifier": "Units_2_",
+			"uid": 21,
+			"relPath": "Art/Units (2).png",
+			"embedAtlas": null,
+			"pxWid": 104,
+			"pxHei": 48,
+			"tileGridSize": 8,
+			"spacing": 0,
+			"padding": 0,
+			"tags": [],
+			"tagsSourceEnumUid": null,
+			"enumTags": [],
+			"customData": [],
+			"savedSelections": [],
+			"cachedPixelData": {
+				"opaqueTiles": "000000011000000000001100000000000111100000000011000000000001111000000000111111",
+				"averageColors": "6b967a9700000000000000000000f764f76500000000000000006ba78b9700000000000000000000f765f87500000000000000006c966c966ba86a97000000000000f764f864f765f765000000007b967b9600000000000000000000f764f76400000000000000005b965b967b857b85000000000000f654f754f754f764000000006ca66b956a855b965ba85a970000f764f754f654f654f665f654"
+			}
 		}
 	], "enums": [], "externalEnums": [], "levelFields": [] },
 	"levels": [
@@ -515,9 +647,9 @@
 				{
 					"__identifier": "Entities",
 					"__type": "Entities",
-					"__cWid": 16,
-					"__cHei": 16,
-					"__gridSize": 16,
+					"__cWid": 32,
+					"__cHei": 32,
+					"__gridSize": 8,
 					"__opacity": 1,
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
@@ -538,7 +670,7 @@
 					"entityInstances": [
 						{
 							"__identifier": "Doorway",
-							"__grid": [8,2],
+							"__grid": [16,5],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 4, "x": 32, "y": 248, "w": 8, "h": 8 },
@@ -547,7 +679,7 @@
 							"width": 8,
 							"height": 8,
 							"defUid": 11,
-							"px": [128,32],
+							"px": [128,40],
 							"fieldInstances": [{ "__identifier": "Destination", "__type": "EntityRef", "__value": {
 								"entityIid": "2885e880-fec0-11ee-840d-af8a61aa18ea",
 								"layerIid": "13c2f781-fec0-11ee-840d-cf7bc2387b11",
@@ -558,11 +690,11 @@
 								"params": ["2885e880-fec0-11ee-840d-af8a61aa18ea"]
 							}] }],
 							"__worldX": 128,
-							"__worldY": 32
+							"__worldY": 40
 						},
 						{
 							"__identifier": "Player_Spawn",
-							"__grid": [8,6],
+							"__grid": [16,13],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 9, "x": 64, "y": 72, "w": 8, "h": 8 },
@@ -571,10 +703,32 @@
 							"width": 8,
 							"height": 8,
 							"defUid": 16,
-							"px": [128,96],
+							"px": [128,104],
 							"fieldInstances": [],
 							"__worldX": 128,
-							"__worldY": 96
+							"__worldY": 104
+						},
+						{
+							"__identifier": "NPC",
+							"__grid": [12,8],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 21, "x": 40, "y": 40, "w": 8, "h": 8 },
+							"__smartColor": "#EAD4AA",
+							"iid": "f2298450-fec0-11ee-840d-c102c2cbfe02",
+							"width": 8,
+							"height": 8,
+							"defUid": 18,
+							"px": [96,64],
+							"fieldInstances": [
+								{ "__identifier": "Name", "__type": "String", "__value": "Steve", "__tile": null, "defUid": 19, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Steve"]
+								}] },
+								{ "__identifier": "DialogTree", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 20, "realEditorValues": [] }
+							],
+							"__worldX": 96,
+							"__worldY": 64
 						}
 					]
 				},
@@ -1840,9 +1994,9 @@
 				{
 					"__identifier": "Entities",
 					"__type": "Entities",
-					"__cWid": 33,
-					"__cHei": 36,
-					"__gridSize": 16,
+					"__cWid": 65,
+					"__cHei": 71,
+					"__gridSize": 8,
 					"__opacity": 1,
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
@@ -1863,7 +2017,7 @@
 					"entityInstances": [
 						{
 							"__identifier": "Doorway",
-							"__grid": [15,34],
+							"__grid": [32,67],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 4, "x": 32, "y": 248, "w": 8, "h": 8 },
@@ -1872,7 +2026,7 @@
 							"width": 8,
 							"height": 8,
 							"defUid": 11,
-							"px": [240,544],
+							"px": [256,536],
 							"fieldInstances": [{ "__identifier": "Destination", "__type": "EntityRef", "__value": {
 								"entityIid": "1e1813f0-fec0-11ee-840d-217dce7cb8d6",
 								"layerIid": "13c2f780-fec0-11ee-840d-9fbfd289dce3",
@@ -1882,8 +2036,8 @@
 								"id": "V_String",
 								"params": ["1e1813f0-fec0-11ee-840d-217dce7cb8d6"]
 							}] }],
-							"__worldX": 120,
-							"__worldY": -24
+							"__worldX": 136,
+							"__worldY": -32
 						}
 					]
 				},

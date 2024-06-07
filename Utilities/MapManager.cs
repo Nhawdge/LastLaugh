@@ -143,17 +143,34 @@ namespace LastLaugh.Utilities
                         var door = new Doorway(doorAt);
                         var levelConnection = entity.FieldInstances.First(x => x.Identifier == "Destination");
 
-
-                        if (LevelIdMap.TryGetValue(levelConnection.Value.LevelIid, out var id))
+                        if (LevelIdMap.TryGetValue(levelConnection.Value.ValueClass.LevelIid, out var id))
                             door.LevelId = id;
 
-                        door.TargetEntityId = levelConnection.Value.EntityIid;
+                        door.TargetEntityId = levelConnection.Value.ValueClass.EntityIid;
 
                         var doorSprite = new Render(TextureKey.Empty) { Position = doorAt };
                         //doorSprite.SetSource(new Rectangle(8 * 5, 8 * 31, 8, 8));
                         doorSprite.OriginPos = Render.OriginAlignment.LeftTop;
 
                         world.Create(door, doorSprite, new StructureLayer());
+                    }
+
+                    if (entity.Identifier == "NPC")
+                    {
+                        var doorAt = entity.Px.ToVector2();
+                        //var door = new Doorway(doorAt);
+                        //var levelConnection = entity.FieldInstances.First(x => x.Identifier == "Destination");
+
+                        //if (LevelIdMap.TryGetValue(levelConnection.Value.LevelIid, out var id))
+                        //door.LevelId = id;
+
+                        //door.TargetEntityId = levelConnection.Value.EntityIid;
+
+                        var sprite = new Render(TextureKey.PortraitNpc1) { Position = doorAt };
+
+                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
+
+                        world.Create(sprite, new UnitLayer());
                     }
                 }
 

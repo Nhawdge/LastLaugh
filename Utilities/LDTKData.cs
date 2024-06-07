@@ -334,7 +334,7 @@ namespace QuickType.Map
         public object Regex { get; set; }
 
         [JsonPropertyName("acceptFileTypes")]
-        public object AcceptFileTypes { get; set; }
+        public string[] AcceptFileTypes { get; set; }
 
         [JsonPropertyName("defaultOverride")]
         public object DefaultOverride { get; set; }
@@ -763,7 +763,7 @@ namespace QuickType.Map
         public string Type { get; set; }
 
         [JsonPropertyName("__value")]
-        public Value Value { get; set; }
+        public ValueUnion Value { get; set; }
 
         [JsonPropertyName("__tile")]
         public object Tile { get; set; }
@@ -781,10 +781,10 @@ namespace QuickType.Map
         public string Id { get; set; }
 
         [JsonPropertyName("params")]
-        public Guid[] Params { get; set; }
+        public string[] Params { get; set; }
     }
 
-    public partial class Value
+    public partial class ValueClass
     {
         [JsonPropertyName("entityIid")]
         public Guid EntityIid { get; set; }
@@ -829,6 +829,16 @@ namespace QuickType.Map
         public string Dir { get; set; }
     }
 
+    public partial struct ValueUnion
+    {
+        public string String;
+        public ValueClass ValueClass;
+
+        public static implicit operator ValueUnion(string String) => new ValueUnion { String = String };
+        public static implicit operator ValueUnion(ValueClass ValueClass) => new ValueUnion { ValueClass = ValueClass };
+        public bool IsNull => ValueClass == null && String == null;
+    }
+
     public partial class LdtkData
     {
         public static LdtkData FromJson(string json) => JsonSerializer.Deserialize<LdtkData>(json, QuickType.Map.Converter.Settings);
@@ -845,11 +855,55 @@ namespace QuickType.Map
         {
             Converters =
             {
+                ValueUnionConverter.Singleton,
                 new DateOnlyConverter(),
                 new TimeOnlyConverter(),
                 IsoDateTimeOffsetConverter.Singleton
             },
         };
+    }
+
+    internal class ValueUnionConverter : JsonConverter<ValueUnion>
+    {
+        public override bool CanConvert(Type t) => t == typeof(ValueUnion);
+
+        public override ValueUnion Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case JsonTokenType.Null:
+                    return new ValueUnion { };
+                case JsonTokenType.String:
+                    var stringValue = reader.GetString();
+                    return new ValueUnion { String = stringValue };
+                case JsonTokenType.StartObject:
+                    var objectValue = JsonSerializer.Deserialize<ValueClass>(ref reader, options);
+                    return new ValueUnion { ValueClass = objectValue };
+            }
+            throw new Exception("Cannot unmarshal type ValueUnion");
+        }
+
+        public override void Write(Utf8JsonWriter writer, ValueUnion value, JsonSerializerOptions options)
+        {
+            if (value.IsNull)
+            {
+                writer.WriteNullValue();
+                return;
+            }
+            if (value.String != null)
+            {
+                JsonSerializer.Serialize(writer, value.String, options);
+                return;
+            }
+            if (value.ValueClass != null)
+            {
+                JsonSerializer.Serialize(writer, value.ValueClass, options);
+                return;
+            }
+            throw new Exception("Cannot marshal type ValueUnion");
+        }
+
+        public static readonly ValueUnionConverter Singleton = new ValueUnionConverter();
     }
 
     public class DateOnlyConverter : JsonConverter<DateOnly>

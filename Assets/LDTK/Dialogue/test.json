@@ -1,0 +1,20 @@
+{
+    "Options": [
+        {
+            "Options": [],
+            "NpcText": [
+                "Oh"
+            ],
+            "SelectionText": "I'm me",
+            "RequiredKeys": [],
+            "CreatedKeys": []
+        }
+    ],
+    "NpcText": [
+        "Hi",
+        "Who are you?"
+    ],
+    "SelectionText": "Hello",
+    "RequiredKeys": [],
+    "CreatedKeys": []
+}
