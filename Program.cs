@@ -1,4 +1,3 @@
 ﻿using LastLaugh;
 
-var Engine = new LastLaughEngine();
-Engine.StartGame();
+LastLaughEngine.Instance.StartGame();

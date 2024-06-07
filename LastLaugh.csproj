@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\Aseprite\" />
+    <Folder Include="Assets\Art\" />
     <Folder Include="Itchio\" />
   </ItemGroup>
 

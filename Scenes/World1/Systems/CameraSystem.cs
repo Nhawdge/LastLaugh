@@ -43,7 +43,7 @@ namespace LastLaugh.Scenes.World1.Systems
             }
             else if (Raylib.IsKeyPressed(KeyboardKey.PageUp))
             {
-                LastLaughEngine.Instance.Camera.Zoom = Math.Min(LastLaughEngine.Instance.Camera.Zoom + 0.2f, 2f);
+                LastLaughEngine.Instance.Camera.Zoom = Math.Min(LastLaughEngine.Instance.Camera.Zoom + 0.2f, 10f);
                 Console.WriteLine(LastLaughEngine.Instance.Camera.Zoom);
             }
             if (Raylib.IsMouseButtonPressed(MouseButton.Right))

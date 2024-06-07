@@ -17,32 +17,22 @@ namespace LastLaugh.Scenes.World1.Systems
             var player = playerEntity.Get<Player>();
             var sprite = playerEntity.Get<Sprite>();
 
-            Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Bottom), 5, Color.Red);
-            Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Top), 5, Color.Red);
-            Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Left), 5, Color.Red);
-            Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Right), 5, Color.Red);
-
+            //Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Bottom), 5, Color.Red);
+            //Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Top), 5, Color.Red);
+            //Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Left), 5, Color.Red);
+            //Raylib.DrawRectangleLinesEx(sprite.GetCollider(CollisionDetectors.Right), 5, Color.Red);
 
             var force = Vector2.Zero;
 
             var speed = 50f;
-            var jumpStrength = 200;
-            if (sprite.IsGrounded)
-            {
-                jumpClock = 0;
-            }
-            else
-            {
-                jumpClock += Raylib.GetFrameTime();
-            }
-            var canJump = sprite.IsGrounded || jumpClock < 0.25f;
 
-            if (canJump && Raylib.IsKeyDown(KeyboardKey.Space))
+            if (Raylib.IsKeyDown(KeyboardKey.W))
             {
-                force.Y = -jumpStrength * Raylib.GetFrameTime();
+                force.Y = -1;
             }
             if (Raylib.IsKeyDown(KeyboardKey.S))
             {
+                force.Y = 1;
             }
             if (Raylib.IsKeyDown(KeyboardKey.A))
             {
@@ -53,6 +43,8 @@ namespace LastLaugh.Scenes.World1.Systems
                 force.X = 1;
             }
             sprite.Force = force * speed;
+
+            sprite.Position += sprite.Force * Raylib.GetFrameTime();
         }
     }
 }

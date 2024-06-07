@@ -91,7 +91,7 @@ namespace QuickType.Map
         public bool SimplifiedExport { get; set; }
 
         [JsonPropertyName("imageExportMode")]
-        public ImageExportMode ImageExportMode { get; set; }
+        public string ImageExportMode { get; set; }
 
         [JsonPropertyName("exportLevelBg")]
         public bool ExportLevelBg { get; set; }
@@ -163,7 +163,7 @@ namespace QuickType.Map
         public long Uid { get; set; }
 
         [JsonPropertyName("tags")]
-        public Tag[] Tags { get; set; }
+        public object[] Tags { get; set; }
 
         [JsonPropertyName("exportToToc")]
         public bool ExportToToc { get; set; }
@@ -172,7 +172,7 @@ namespace QuickType.Map
         public bool AllowOutOfBounds { get; set; }
 
         [JsonPropertyName("doc")]
-        public string Doc { get; set; }
+        public object Doc { get; set; }
 
         [JsonPropertyName("width")]
         public long Width { get; set; }
@@ -217,16 +217,16 @@ namespace QuickType.Map
         public string Color { get; set; }
 
         [JsonPropertyName("renderMode")]
-        public RenderMode RenderMode { get; set; }
+        public string RenderMode { get; set; }
 
         [JsonPropertyName("showName")]
         public bool ShowName { get; set; }
 
         [JsonPropertyName("tilesetId")]
-        public long? TilesetId { get; set; }
+        public long TilesetId { get; set; }
 
         [JsonPropertyName("tileRenderMode")]
-        public TileRenderMode TileRenderMode { get; set; }
+        public string TileRenderMode { get; set; }
 
         [JsonPropertyName("tileRect")]
         public Tile TileRect { get; set; }
@@ -241,10 +241,10 @@ namespace QuickType.Map
         public long MaxCount { get; set; }
 
         [JsonPropertyName("limitScope")]
-        public LimitScope LimitScope { get; set; }
+        public string LimitScope { get; set; }
 
         [JsonPropertyName("limitBehavior")]
-        public LimitBehavior LimitBehavior { get; set; }
+        public string LimitBehavior { get; set; }
 
         [JsonPropertyName("pivotX")]
         public long PivotX { get; set; }
@@ -262,7 +262,7 @@ namespace QuickType.Map
         public string Identifier { get; set; }
 
         [JsonPropertyName("doc")]
-        public string Doc { get; set; }
+        public object Doc { get; set; }
 
         [JsonPropertyName("__type")]
         public string Type { get; set; }
@@ -280,7 +280,7 @@ namespace QuickType.Map
         public bool CanBeNull { get; set; }
 
         [JsonPropertyName("arrayMinLength")]
-        public long? ArrayMinLength { get; set; }
+        public object ArrayMinLength { get; set; }
 
         [JsonPropertyName("arrayMaxLength")]
         public object ArrayMaxLength { get; set; }
@@ -292,10 +292,10 @@ namespace QuickType.Map
         public long EditorDisplayScale { get; set; }
 
         [JsonPropertyName("editorDisplayPos")]
-        public EditorDisplayPos EditorDisplayPos { get; set; }
+        public string EditorDisplayPos { get; set; }
 
         [JsonPropertyName("editorLinkStyle")]
-        public EditorLinkStyle EditorLinkStyle { get; set; }
+        public string EditorLinkStyle { get; set; }
 
         [JsonPropertyName("editorDisplayColor")]
         public object EditorDisplayColor { get; set; }
@@ -337,7 +337,7 @@ namespace QuickType.Map
         public object AcceptFileTypes { get; set; }
 
         [JsonPropertyName("defaultOverride")]
-        public DefaultOverride DefaultOverride { get; set; }
+        public object DefaultOverride { get; set; }
 
         [JsonPropertyName("textLanguageMode")]
         public object TextLanguageMode { get; set; }
@@ -352,25 +352,16 @@ namespace QuickType.Map
         public bool AllowOutOfLevelRef { get; set; }
 
         [JsonPropertyName("allowedRefs")]
-        public AllowedRefs AllowedRefs { get; set; }
+        public string AllowedRefs { get; set; }
 
         [JsonPropertyName("allowedRefsEntityUid")]
         public object AllowedRefsEntityUid { get; set; }
 
         [JsonPropertyName("allowedRefTags")]
-        public Tag[] AllowedRefTags { get; set; }
+        public object[] AllowedRefTags { get; set; }
 
         [JsonPropertyName("tilesetUid")]
         public object TilesetUid { get; set; }
-    }
-
-    public partial class DefaultOverride
-    {
-        [JsonPropertyName("id")]
-        public Id Id { get; set; }
-
-        [JsonPropertyName("params")]
-        public long[] Params { get; set; }
     }
 
     public partial class Tile
@@ -394,13 +385,13 @@ namespace QuickType.Map
     public partial class Layer
     {
         [JsonPropertyName("__type")]
-        public TypeEnum Type { get; set; }
+        public string Type { get; set; }
 
         [JsonPropertyName("identifier")]
         public string Identifier { get; set; }
 
         [JsonPropertyName("type")]
-        public TypeEnum LayerType { get; set; }
+        public string LayerType { get; set; }
 
         [JsonPropertyName("uid")]
         public long Uid { get; set; }
@@ -469,16 +460,16 @@ namespace QuickType.Map
         public bool UseAsyncRender { get; set; }
 
         [JsonPropertyName("intGridValues")]
-        public IntGridValue[] IntGridValues { get; set; }
+        public object[] IntGridValues { get; set; }
 
         [JsonPropertyName("intGridValuesGroups")]
         public object[] IntGridValuesGroups { get; set; }
 
         [JsonPropertyName("autoRuleGroups")]
-        public AutoRuleGroup[] AutoRuleGroups { get; set; }
+        public object[] AutoRuleGroups { get; set; }
 
         [JsonPropertyName("autoSourceLayerDefUid")]
-        public long? AutoSourceLayerDefUid { get; set; }
+        public object AutoSourceLayerDefUid { get; set; }
 
         [JsonPropertyName("tilesetDefUid")]
         public long? TilesetDefUid { get; set; }
@@ -491,150 +482,6 @@ namespace QuickType.Map
 
         [JsonPropertyName("biomeFieldUid")]
         public object BiomeFieldUid { get; set; }
-    }
-
-    public partial class AutoRuleGroup
-    {
-        [JsonPropertyName("uid")]
-        public long Uid { get; set; }
-
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        [JsonPropertyName("color")]
-        public object Color { get; set; }
-
-        [JsonPropertyName("icon")]
-        public object Icon { get; set; }
-
-        [JsonPropertyName("active")]
-        public bool Active { get; set; }
-
-        [JsonPropertyName("isOptional")]
-        public bool IsOptional { get; set; }
-
-        [JsonPropertyName("rules")]
-        public Rule[] Rules { get; set; }
-
-        [JsonPropertyName("usesWizard")]
-        public bool UsesWizard { get; set; }
-
-        [JsonPropertyName("requiredBiomeValues")]
-        public object[] RequiredBiomeValues { get; set; }
-
-        [JsonPropertyName("biomeRequirementMode")]
-        public long BiomeRequirementMode { get; set; }
-    }
-
-    public partial class Rule
-    {
-        [JsonPropertyName("uid")]
-        public long Uid { get; set; }
-
-        [JsonPropertyName("active")]
-        public bool Active { get; set; }
-
-        [JsonPropertyName("size")]
-        public long Size { get; set; }
-
-        [JsonPropertyName("tileRectsIds")]
-        public long[][] TileRectsIds { get; set; }
-
-        [JsonPropertyName("alpha")]
-        public long Alpha { get; set; }
-
-        [JsonPropertyName("chance")]
-        public long Chance { get; set; }
-
-        [JsonPropertyName("breakOnMatch")]
-        public bool BreakOnMatch { get; set; }
-
-        [JsonPropertyName("pattern")]
-        public long[] Pattern { get; set; }
-
-        [JsonPropertyName("flipX")]
-        public bool FlipX { get; set; }
-
-        [JsonPropertyName("flipY")]
-        public bool FlipY { get; set; }
-
-        [JsonPropertyName("xModulo")]
-        public long XModulo { get; set; }
-
-        [JsonPropertyName("yModulo")]
-        public long YModulo { get; set; }
-
-        [JsonPropertyName("xOffset")]
-        public long XOffset { get; set; }
-
-        [JsonPropertyName("yOffset")]
-        public long YOffset { get; set; }
-
-        [JsonPropertyName("tileXOffset")]
-        public long TileXOffset { get; set; }
-
-        [JsonPropertyName("tileYOffset")]
-        public long TileYOffset { get; set; }
-
-        [JsonPropertyName("tileRandomXMin")]
-        public long TileRandomXMin { get; set; }
-
-        [JsonPropertyName("tileRandomXMax")]
-        public long TileRandomXMax { get; set; }
-
-        [JsonPropertyName("tileRandomYMin")]
-        public long TileRandomYMin { get; set; }
-
-        [JsonPropertyName("tileRandomYMax")]
-        public long TileRandomYMax { get; set; }
-
-        [JsonPropertyName("checker")]
-        public ImageExportMode Checker { get; set; }
-
-        [JsonPropertyName("tileMode")]
-        public TileMode TileMode { get; set; }
-
-        [JsonPropertyName("pivotX")]
-        public long PivotX { get; set; }
-
-        [JsonPropertyName("pivotY")]
-        public long PivotY { get; set; }
-
-        [JsonPropertyName("outOfBoundsValue")]
-        public long OutOfBoundsValue { get; set; }
-
-        [JsonPropertyName("invalidated")]
-        public bool Invalidated { get; set; }
-
-        [JsonPropertyName("perlinActive")]
-        public bool PerlinActive { get; set; }
-
-        [JsonPropertyName("perlinSeed")]
-        public long PerlinSeed { get; set; }
-
-        [JsonPropertyName("perlinScale")]
-        public double PerlinScale { get; set; }
-
-        [JsonPropertyName("perlinOctaves")]
-        public long PerlinOctaves { get; set; }
-    }
-
-    public partial class IntGridValue
-    {
-        [JsonPropertyName("value")]
-        public long Value { get; set; }
-
-        [JsonPropertyName("identifier")]
-        public object Identifier { get; set; }
-
-        [JsonPropertyName("color")]
-        public string Color { get; set; }
-
-        [JsonPropertyName("tile")]
-        public object Tile { get; set; }
-
-        [JsonPropertyName("groupUid")]
-        public long GroupUid { get; set; }
     }
 
     public partial class Tileset
@@ -796,7 +643,7 @@ namespace QuickType.Map
         public string Identifier { get; set; }
 
         [JsonPropertyName("__type")]
-        public TypeEnum Type { get; set; }
+        public string Type { get; set; }
 
         [JsonPropertyName("__cWid")]
         public long CWid { get; set; }
@@ -820,7 +667,7 @@ namespace QuickType.Map
         public long? TilesetDefUid { get; set; }
 
         [JsonPropertyName("__tilesetRelPath")]
-        public TilesetRelPath? TilesetRelPath { get; set; }
+        public string TilesetRelPath { get; set; }
 
         [JsonPropertyName("iid")]
         public Guid Iid { get; set; }
@@ -844,43 +691,22 @@ namespace QuickType.Map
         public object[] OptionalRules { get; set; }
 
         [JsonPropertyName("intGridCsv")]
-        public long[] IntGridCsv { get; set; }
+        public object[] IntGridCsv { get; set; }
 
         [JsonPropertyName("autoLayerTiles")]
-        public AutoLayerTileElement[] AutoLayerTiles { get; set; }
+        public object[] AutoLayerTiles { get; set; }
 
         [JsonPropertyName("seed")]
         public long Seed { get; set; }
 
         [JsonPropertyName("overrideTilesetUid")]
-        public object OverrideTilesetUid { get; set; }
+        public long? OverrideTilesetUid { get; set; }
 
         [JsonPropertyName("gridTiles")]
-        public AutoLayerTileElement[] GridTiles { get; set; }
+        public GridTile[] GridTiles { get; set; }
 
         [JsonPropertyName("entityInstances")]
         public EntityInstance[] EntityInstances { get; set; }
-    }
-
-    public partial class AutoLayerTileElement
-    {
-        [JsonPropertyName("px")]
-        public long[] Px { get; set; }
-
-        [JsonPropertyName("src")]
-        public long[] Src { get; set; }
-
-        [JsonPropertyName("f")]
-        public long F { get; set; }
-
-        [JsonPropertyName("t")]
-        public long T { get; set; }
-
-        [JsonPropertyName("d")]
-        public long[] D { get; set; }
-
-        [JsonPropertyName("a")]
-        public long A { get; set; }
     }
 
     public partial class EntityInstance
@@ -895,7 +721,7 @@ namespace QuickType.Map
         public long[] Pivot { get; set; }
 
         [JsonPropertyName("__tags")]
-        public Tag[] Tags { get; set; }
+        public object[] Tags { get; set; }
 
         [JsonPropertyName("__tile")]
         public Tile Tile { get; set; }
@@ -937,7 +763,7 @@ namespace QuickType.Map
         public string Type { get; set; }
 
         [JsonPropertyName("__value")]
-        public ValueUnion Value { get; set; }
+        public Value Value { get; set; }
 
         [JsonPropertyName("__tile")]
         public object Tile { get; set; }
@@ -952,37 +778,46 @@ namespace QuickType.Map
     public partial class RealEditorValue
     {
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public string Id { get; set; }
 
         [JsonPropertyName("params")]
-        public Param[] Params { get; set; }
+        public Guid[] Params { get; set; }
     }
 
-    public partial class ValueElement
+    public partial class Value
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("entityIid")]
-        public Guid? EntityIid { get; set; }
+        public Guid EntityIid { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("layerIid")]
-        public Guid? LayerIid { get; set; }
+        public Guid LayerIid { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("levelIid")]
-        public Guid? LevelIid { get; set; }
+        public Guid LevelIid { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("worldIid")]
-        public Guid? WorldIid { get; set; }
+        public Guid WorldIid { get; set; }
+    }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("cx")]
-        public long? Cx { get; set; }
+    public partial class GridTile
+    {
+        [JsonPropertyName("px")]
+        public long[] Px { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("cy")]
-        public long? Cy { get; set; }
+        [JsonPropertyName("src")]
+        public long[] Src { get; set; }
+
+        [JsonPropertyName("f")]
+        public long F { get; set; }
+
+        [JsonPropertyName("t")]
+        public long T { get; set; }
+
+        [JsonPropertyName("d")]
+        public long[] D { get; set; }
+
+        [JsonPropertyName("a")]
+        public long A { get; set; }
     }
 
     public partial class Neighbour
@@ -992,53 +827,6 @@ namespace QuickType.Map
 
         [JsonPropertyName("dir")]
         public string Dir { get; set; }
-    }
-
-    public enum Tag { Ability, Dog, Enemy, Player, Puzzle, Threat };
-
-    public enum AllowedRefs { Any, OnlySame, OnlyTags };
-
-    public enum Id { VInt, VString };
-
-    public enum EditorDisplayPos { Above };
-
-    public enum EditorLinkStyle { CurvedArrow, StraightArrow };
-
-    public enum LimitBehavior { MoveLastOne };
-
-    public enum LimitScope { PerLevel, PerWorld };
-
-    public enum RenderMode { Rectangle, Tile };
-
-    public enum TileRenderMode { FitInside };
-
-    public enum ImageExportMode { None };
-
-    public enum TileMode { Single };
-
-    public enum TypeEnum { AutoLayer, Entities, IntGrid, Tiles };
-
-    public enum TilesetRelPath { ArtSciFiTilesetPng, ArtTilesPng };
-
-    public partial struct Param
-    {
-        public long? Integer;
-        public string String;
-
-        public static implicit operator Param(long Integer) => new Param { Integer = Integer };
-        public static implicit operator Param(string String) => new Param { String = String };
-    }
-
-    public partial struct ValueUnion
-    {
-        public long? Integer;
-        public ValueElement ValueElement;
-        public ValueElement[] ValueElementArray;
-
-        public static implicit operator ValueUnion(long Integer) => new ValueUnion { Integer = Integer };
-        public static implicit operator ValueUnion(ValueElement ValueElement) => new ValueUnion { ValueElement = ValueElement };
-        public static implicit operator ValueUnion(ValueElement[] ValueElementArray) => new ValueUnion { ValueElementArray = ValueElementArray };
-        public bool IsNull => ValueElementArray == null && ValueElement == null && Integer == null;
     }
 
     public partial class LdtkData
@@ -1057,555 +845,11 @@ namespace QuickType.Map
         {
             Converters =
             {
-                TagConverter.Singleton,
-                AllowedRefsConverter.Singleton,
-                IdConverter.Singleton,
-                EditorDisplayPosConverter.Singleton,
-                EditorLinkStyleConverter.Singleton,
-                LimitBehaviorConverter.Singleton,
-                LimitScopeConverter.Singleton,
-                RenderModeConverter.Singleton,
-                TileRenderModeConverter.Singleton,
-                TypeEnumConverter.Singleton,
-                ImageExportModeConverter.Singleton,
-                TileModeConverter.Singleton,
-                TilesetRelPathConverter.Singleton,
-                ValueUnionConverter.Singleton,
-                ParamConverter.Singleton,
                 new DateOnlyConverter(),
                 new TimeOnlyConverter(),
                 IsoDateTimeOffsetConverter.Singleton
             },
         };
-    }
-
-    internal class TagConverter : JsonConverter<Tag>
-    {
-        public override bool CanConvert(Type t) => t == typeof(Tag);
-
-        public override Tag Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "Ability":
-                    return Tag.Ability;
-                case "DOG":
-                    return Tag.Dog;
-                case "ENEMY":
-                    return Tag.Enemy;
-                case "PUZZLE":
-                    return Tag.Puzzle;
-                case "Player":
-                    return Tag.Player;
-                case "Threat":
-                    return Tag.Threat;
-            }
-            throw new Exception("Cannot unmarshal type Tag");
-        }
-
-        public override void Write(Utf8JsonWriter writer, Tag value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case Tag.Ability:
-                    JsonSerializer.Serialize(writer, "Ability", options);
-                    return;
-                case Tag.Dog:
-                    JsonSerializer.Serialize(writer, "DOG", options);
-                    return;
-                case Tag.Enemy:
-                    JsonSerializer.Serialize(writer, "ENEMY", options);
-                    return;
-                case Tag.Puzzle:
-                    JsonSerializer.Serialize(writer, "PUZZLE", options);
-                    return;
-                case Tag.Player:
-                    JsonSerializer.Serialize(writer, "Player", options);
-                    return;
-                case Tag.Threat:
-                    JsonSerializer.Serialize(writer, "Threat", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type Tag");
-        }
-
-        public static readonly TagConverter Singleton = new TagConverter();
-    }
-
-    internal class AllowedRefsConverter : JsonConverter<AllowedRefs>
-    {
-        public override bool CanConvert(Type t) => t == typeof(AllowedRefs);
-
-        public override AllowedRefs Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "Any":
-                    return AllowedRefs.Any;
-                case "OnlySame":
-                    return AllowedRefs.OnlySame;
-                case "OnlyTags":
-                    return AllowedRefs.OnlyTags;
-            }
-            throw new Exception("Cannot unmarshal type AllowedRefs");
-        }
-
-        public override void Write(Utf8JsonWriter writer, AllowedRefs value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case AllowedRefs.Any:
-                    JsonSerializer.Serialize(writer, "Any", options);
-                    return;
-                case AllowedRefs.OnlySame:
-                    JsonSerializer.Serialize(writer, "OnlySame", options);
-                    return;
-                case AllowedRefs.OnlyTags:
-                    JsonSerializer.Serialize(writer, "OnlyTags", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type AllowedRefs");
-        }
-
-        public static readonly AllowedRefsConverter Singleton = new AllowedRefsConverter();
-    }
-
-    internal class IdConverter : JsonConverter<Id>
-    {
-        public override bool CanConvert(Type t) => t == typeof(Id);
-
-        public override Id Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "V_Int":
-                    return Id.VInt;
-                case "V_String":
-                    return Id.VString;
-            }
-            throw new Exception("Cannot unmarshal type Id");
-        }
-
-        public override void Write(Utf8JsonWriter writer, Id value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case Id.VInt:
-                    JsonSerializer.Serialize(writer, "V_Int", options);
-                    return;
-                case Id.VString:
-                    JsonSerializer.Serialize(writer, "V_String", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type Id");
-        }
-
-        public static readonly IdConverter Singleton = new IdConverter();
-    }
-
-    internal class EditorDisplayPosConverter : JsonConverter<EditorDisplayPos>
-    {
-        public override bool CanConvert(Type t) => t == typeof(EditorDisplayPos);
-
-        public override EditorDisplayPos Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            if (value == "Above")
-            {
-                return EditorDisplayPos.Above;
-            }
-            throw new Exception("Cannot unmarshal type EditorDisplayPos");
-        }
-
-        public override void Write(Utf8JsonWriter writer, EditorDisplayPos value, JsonSerializerOptions options)
-        {
-            if (value == EditorDisplayPos.Above)
-            {
-                JsonSerializer.Serialize(writer, "Above", options);
-                return;
-            }
-            throw new Exception("Cannot marshal type EditorDisplayPos");
-        }
-
-        public static readonly EditorDisplayPosConverter Singleton = new EditorDisplayPosConverter();
-    }
-
-    internal class EditorLinkStyleConverter : JsonConverter<EditorLinkStyle>
-    {
-        public override bool CanConvert(Type t) => t == typeof(EditorLinkStyle);
-
-        public override EditorLinkStyle Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "CurvedArrow":
-                    return EditorLinkStyle.CurvedArrow;
-                case "StraightArrow":
-                    return EditorLinkStyle.StraightArrow;
-            }
-            throw new Exception("Cannot unmarshal type EditorLinkStyle");
-        }
-
-        public override void Write(Utf8JsonWriter writer, EditorLinkStyle value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case EditorLinkStyle.CurvedArrow:
-                    JsonSerializer.Serialize(writer, "CurvedArrow", options);
-                    return;
-                case EditorLinkStyle.StraightArrow:
-                    JsonSerializer.Serialize(writer, "StraightArrow", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type EditorLinkStyle");
-        }
-
-        public static readonly EditorLinkStyleConverter Singleton = new EditorLinkStyleConverter();
-    }
-
-    internal class LimitBehaviorConverter : JsonConverter<LimitBehavior>
-    {
-        public override bool CanConvert(Type t) => t == typeof(LimitBehavior);
-
-        public override LimitBehavior Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            if (value == "MoveLastOne")
-            {
-                return LimitBehavior.MoveLastOne;
-            }
-            throw new Exception("Cannot unmarshal type LimitBehavior");
-        }
-
-        public override void Write(Utf8JsonWriter writer, LimitBehavior value, JsonSerializerOptions options)
-        {
-            if (value == LimitBehavior.MoveLastOne)
-            {
-                JsonSerializer.Serialize(writer, "MoveLastOne", options);
-                return;
-            }
-            throw new Exception("Cannot marshal type LimitBehavior");
-        }
-
-        public static readonly LimitBehaviorConverter Singleton = new LimitBehaviorConverter();
-    }
-
-    internal class LimitScopeConverter : JsonConverter<LimitScope>
-    {
-        public override bool CanConvert(Type t) => t == typeof(LimitScope);
-
-        public override LimitScope Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "PerLevel":
-                    return LimitScope.PerLevel;
-                case "PerWorld":
-                    return LimitScope.PerWorld;
-            }
-            throw new Exception("Cannot unmarshal type LimitScope");
-        }
-
-        public override void Write(Utf8JsonWriter writer, LimitScope value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case LimitScope.PerLevel:
-                    JsonSerializer.Serialize(writer, "PerLevel", options);
-                    return;
-                case LimitScope.PerWorld:
-                    JsonSerializer.Serialize(writer, "PerWorld", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type LimitScope");
-        }
-
-        public static readonly LimitScopeConverter Singleton = new LimitScopeConverter();
-    }
-
-    internal class RenderModeConverter : JsonConverter<RenderMode>
-    {
-        public override bool CanConvert(Type t) => t == typeof(RenderMode);
-
-        public override RenderMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "Rectangle":
-                    return RenderMode.Rectangle;
-                case "Tile":
-                    return RenderMode.Tile;
-            }
-            throw new Exception("Cannot unmarshal type RenderMode");
-        }
-
-        public override void Write(Utf8JsonWriter writer, RenderMode value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case RenderMode.Rectangle:
-                    JsonSerializer.Serialize(writer, "Rectangle", options);
-                    return;
-                case RenderMode.Tile:
-                    JsonSerializer.Serialize(writer, "Tile", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type RenderMode");
-        }
-
-        public static readonly RenderModeConverter Singleton = new RenderModeConverter();
-    }
-
-    internal class TileRenderModeConverter : JsonConverter<TileRenderMode>
-    {
-        public override bool CanConvert(Type t) => t == typeof(TileRenderMode);
-
-        public override TileRenderMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            if (value == "FitInside")
-            {
-                return TileRenderMode.FitInside;
-            }
-            throw new Exception("Cannot unmarshal type TileRenderMode");
-        }
-
-        public override void Write(Utf8JsonWriter writer, TileRenderMode value, JsonSerializerOptions options)
-        {
-            if (value == TileRenderMode.FitInside)
-            {
-                JsonSerializer.Serialize(writer, "FitInside", options);
-                return;
-            }
-            throw new Exception("Cannot marshal type TileRenderMode");
-        }
-
-        public static readonly TileRenderModeConverter Singleton = new TileRenderModeConverter();
-    }
-
-    internal class TypeEnumConverter : JsonConverter<TypeEnum>
-    {
-        public override bool CanConvert(Type t) => t == typeof(TypeEnum);
-
-        public override TypeEnum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "AutoLayer":
-                    return TypeEnum.AutoLayer;
-                case "Entities":
-                    return TypeEnum.Entities;
-                case "IntGrid":
-                    return TypeEnum.IntGrid;
-                case "Tiles":
-                    return TypeEnum.Tiles;
-            }
-            throw new Exception("Cannot unmarshal type TypeEnum");
-        }
-
-        public override void Write(Utf8JsonWriter writer, TypeEnum value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case TypeEnum.AutoLayer:
-                    JsonSerializer.Serialize(writer, "AutoLayer", options);
-                    return;
-                case TypeEnum.Entities:
-                    JsonSerializer.Serialize(writer, "Entities", options);
-                    return;
-                case TypeEnum.IntGrid:
-                    JsonSerializer.Serialize(writer, "IntGrid", options);
-                    return;
-                case TypeEnum.Tiles:
-                    JsonSerializer.Serialize(writer, "Tiles", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type TypeEnum");
-        }
-
-        public static readonly TypeEnumConverter Singleton = new TypeEnumConverter();
-    }
-
-    internal class ImageExportModeConverter : JsonConverter<ImageExportMode>
-    {
-        public override bool CanConvert(Type t) => t == typeof(ImageExportMode);
-
-        public override ImageExportMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            if (value == "None")
-            {
-                return ImageExportMode.None;
-            }
-            throw new Exception("Cannot unmarshal type ImageExportMode");
-        }
-
-        public override void Write(Utf8JsonWriter writer, ImageExportMode value, JsonSerializerOptions options)
-        {
-            if (value == ImageExportMode.None)
-            {
-                JsonSerializer.Serialize(writer, "None", options);
-                return;
-            }
-            throw new Exception("Cannot marshal type ImageExportMode");
-        }
-
-        public static readonly ImageExportModeConverter Singleton = new ImageExportModeConverter();
-    }
-
-    internal class TileModeConverter : JsonConverter<TileMode>
-    {
-        public override bool CanConvert(Type t) => t == typeof(TileMode);
-
-        public override TileMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            if (value == "Single")
-            {
-                return TileMode.Single;
-            }
-            throw new Exception("Cannot unmarshal type TileMode");
-        }
-
-        public override void Write(Utf8JsonWriter writer, TileMode value, JsonSerializerOptions options)
-        {
-            if (value == TileMode.Single)
-            {
-                JsonSerializer.Serialize(writer, "Single", options);
-                return;
-            }
-            throw new Exception("Cannot marshal type TileMode");
-        }
-
-        public static readonly TileModeConverter Singleton = new TileModeConverter();
-    }
-
-    internal class TilesetRelPathConverter : JsonConverter<TilesetRelPath>
-    {
-        public override bool CanConvert(Type t) => t == typeof(TilesetRelPath);
-
-        public override TilesetRelPath Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            var value = reader.GetString();
-            switch (value)
-            {
-                case "../Art/Tiles.png":
-                    return TilesetRelPath.ArtTilesPng;
-                case "../Art/sci-fi-tileset.png":
-                    return TilesetRelPath.ArtSciFiTilesetPng;
-            }
-            throw new Exception("Cannot unmarshal type TilesetRelPath");
-        }
-
-        public override void Write(Utf8JsonWriter writer, TilesetRelPath value, JsonSerializerOptions options)
-        {
-            switch (value)
-            {
-                case TilesetRelPath.ArtTilesPng:
-                    JsonSerializer.Serialize(writer, "../Art/Tiles.png", options);
-                    return;
-                case TilesetRelPath.ArtSciFiTilesetPng:
-                    JsonSerializer.Serialize(writer, "../Art/sci-fi-tileset.png", options);
-                    return;
-            }
-            throw new Exception("Cannot marshal type TilesetRelPath");
-        }
-
-        public static readonly TilesetRelPathConverter Singleton = new TilesetRelPathConverter();
-    }
-
-    internal class ValueUnionConverter : JsonConverter<ValueUnion>
-    {
-        public override bool CanConvert(Type t) => t == typeof(ValueUnion);
-
-        public override ValueUnion Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonTokenType.Null:
-                    return new ValueUnion { };
-                case JsonTokenType.Number:
-                    var integerValue = reader.GetInt64();
-                    return new ValueUnion { Integer = integerValue };
-                case JsonTokenType.StartObject:
-                    var objectValue = JsonSerializer.Deserialize<ValueElement>(ref reader, options);
-                    return new ValueUnion { ValueElement = objectValue };
-                case JsonTokenType.StartArray:
-                    var arrayValue = JsonSerializer.Deserialize<ValueElement[]>(ref reader, options);
-                    return new ValueUnion { ValueElementArray = arrayValue };
-            }
-            throw new Exception("Cannot unmarshal type ValueUnion");
-        }
-
-        public override void Write(Utf8JsonWriter writer, ValueUnion value, JsonSerializerOptions options)
-        {
-            if (value.IsNull)
-            {
-                writer.WriteNullValue();
-                return;
-            }
-            if (value.Integer != null)
-            {
-                JsonSerializer.Serialize(writer, value.Integer.Value, options);
-                return;
-            }
-            if (value.ValueElementArray != null)
-            {
-                JsonSerializer.Serialize(writer, value.ValueElementArray, options);
-                return;
-            }
-            if (value.ValueElement != null)
-            {
-                JsonSerializer.Serialize(writer, value.ValueElement, options);
-                return;
-            }
-            throw new Exception("Cannot marshal type ValueUnion");
-        }
-
-        public static readonly ValueUnionConverter Singleton = new ValueUnionConverter();
-    }
-
-    internal class ParamConverter : JsonConverter<Param>
-    {
-        public override bool CanConvert(Type t) => t == typeof(Param);
-
-        public override Param Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonTokenType.Number:
-                    var integerValue = reader.GetInt64();
-                    return new Param { Integer = integerValue };
-                case JsonTokenType.String:
-                    var stringValue = reader.GetString();
-                    return new Param { String = stringValue };
-            }
-            throw new Exception("Cannot unmarshal type Param");
-        }
-
-        public override void Write(Utf8JsonWriter writer, Param value, JsonSerializerOptions options)
-        {
-            if (value.Integer != null)
-            {
-                JsonSerializer.Serialize(writer, value.Integer.Value, options);
-                return;
-            }
-            if (value.String != null)
-            {
-                JsonSerializer.Serialize(writer, value.String, options);
-                return;
-            }
-            throw new Exception("Cannot marshal type Param");
-        }
-
-        public static readonly ParamConverter Singleton = new ParamConverter();
     }
 
     public class DateOnlyConverter : JsonConverter<DateOnly>
@@ -1625,7 +869,7 @@ namespace QuickType.Map
         }
 
         public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
-            => writer.WriteStringValue(value.ToString(serializationFormat));
+                => writer.WriteStringValue(value.ToString(serializationFormat));
     }
 
     public class TimeOnlyConverter : JsonConverter<TimeOnly>
@@ -1646,7 +890,7 @@ namespace QuickType.Map
         }
 
         public override void Write(Utf8JsonWriter writer, TimeOnly value, JsonSerializerOptions options)
-            => writer.WriteStringValue(value.ToString(serializationFormat));
+                => writer.WriteStringValue(value.ToString(serializationFormat));
     }
 
     internal class IsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
@@ -1683,7 +927,7 @@ namespace QuickType.Map
 
 
             if ((_dateTimeStyles & DateTimeStyles.AdjustToUniversal) == DateTimeStyles.AdjustToUniversal
-                || (_dateTimeStyles & DateTimeStyles.AssumeUniversal) == DateTimeStyles.AssumeUniversal)
+                    || (_dateTimeStyles & DateTimeStyles.AssumeUniversal) == DateTimeStyles.AssumeUniversal)
             {
                 value = value.ToUniversalTime();
             }

@@ -20,7 +20,7 @@ namespace LastLaugh.Scenes.World1.Systems
             world.Query(in query, (entity) =>
             {
                 var doorway = entity.Get<Doorway>();
-                var doorSprite = entity.Get<Sprite>();
+                var doorSprite = entity.Get<Render>();
 
                 if (Raylib.CheckCollisionRecs(playerSprite.CollisionDestination, doorSprite.CollisionDestination) && Raylib.IsKeyPressed(KeyboardKey.E))
                 {

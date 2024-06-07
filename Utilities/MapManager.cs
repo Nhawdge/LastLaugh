@@ -20,7 +20,7 @@ namespace LastLaugh.Utilities
 
         public void LoadMap(string key, World world, Guid spawnEntity = default)
         {
-            var mapName = "SNE";
+            var mapName = "MainMap";
             var mapData = new LdtkData();
             var mapFile = File.ReadAllText($"Assets/LDTK/{mapName}.ldtk");
             var data = LdtkData.FromJson(mapFile);
@@ -43,30 +43,58 @@ namespace LastLaugh.Utilities
             foreach (var layer in level.LayerInstances)
             {
                 Console.WriteLine($"Layer: {layer.Identifier}");
-                //if (layer.Identifier == "Background")
-                //{
-                //    foreach (var tile in layer.GridTiles)
-                //    {
-                //        var sprite = new Sprite(TextureKey.Tiles);
-                //        sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                //        var animationIdex = (int)((tile.Src.ToVector2().X / layer.GridSize) - layer.GridSize);
-                //        sprite.Play("sky");
-                //        sprite.Position = tile.Px.ToVector2();
-                //        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
-                //    }
-                //}
-                if (layer.Identifier == "AutoTiles")
+                if (layer.Identifier == "Ground")
                 {
-                    foreach (var tile in layer.AutoLayerTiles)
+                    foreach (var tile in layer.GridTiles)
                     {
-                        var sprite = new Render(TextureKey.ScifiTiles);
+                        var sprite = new Render(TextureKey.Tiles);
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                        var sourcePos = tile.Src.ToVector2();
-                        sprite.SetSource(new Rectangle((int)sourcePos.X, (int)sourcePos.Y, (int)layer.GridSize, (int)layer.GridSize));
+                        //sprite.SourceX = (int)tile.Src[0];
+                        //sprite.SourceY = (int)tile.Src[1];
+                        sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
                         sprite.Position = tile.Px.ToVector2();
                         world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
                     }
                 }
+                if (layer.Identifier == "Structures")
+                {
+                    foreach (var tile in layer.GridTiles)
+                    {
+                        var sprite = new Render(TextureKey.Structures);
+                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
+                        //sprite.SourceX = (int)tile.Src[0];
+                        //sprite.SourceY = (int)tile.Src[1];
+                        sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
+                        sprite.Position = tile.Px.ToVector2();
+                        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
+                    }
+                }
+
+                if (layer.Identifier == "Walls")
+                {
+                    foreach (var tile in layer.GridTiles)
+                    {
+                        var sprite = new Render(TextureKey.Walls);
+                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
+                        //sprite.SourceX = (int)tile.Src[0];
+                        //sprite.SourceY = (int)tile.Src[1];
+                        sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
+                        sprite.Position = tile.Px.ToVector2();
+                        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
+                    }
+                }
+                //if (layer.Identifier == "AutoTiles")
+                //{
+                //    foreach (var tile in layer.AutoLayerTiles)
+                //    {
+                //        var sprite = new Render(TextureKey.ScifiTiles);
+                //        sprite.OriginPos = Render.OriginAlignment.LeftTop;
+                //        var sourcePos = tile.Src.ToVector2();
+                //        sprite.SetSource(new Rectangle((int)sourcePos.X, (int)sourcePos.Y, (int)layer.GridSize, (int)layer.GridSize));
+                //        sprite.Position = tile.Px.ToVector2();
+                //        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
+                //    }
+                //}
                 if (layer.Identifier == "Collisions")
                 {
                     Singleton.Instance.CollisionGrid = new Dictionary<Rectangle, CollisionType>();
@@ -113,21 +141,19 @@ namespace LastLaugh.Utilities
                     {
                         var doorAt = entity.Px.ToVector2();
                         var door = new Doorway(doorAt);
-                        var levelConnection = entity.FieldInstances.First(x => x.Identifier == "CONNECTION");
-                        var rawLevelId = levelConnection.Value.ValueElement.LevelIid;
-                        var rawEntityId = levelConnection.Value.ValueElement.EntityIid;
+                        var levelConnection = entity.FieldInstances.First(x => x.Identifier == "Destination");
 
-                        if (rawLevelId.HasValue && LevelIdMap.TryGetValue(rawLevelId.Value, out var id))
+
+                        if (LevelIdMap.TryGetValue(levelConnection.Value.LevelIid, out var id))
                             door.LevelId = id;
 
-                        if (rawEntityId.HasValue)
-                            door.TargetEntityId = rawEntityId.Value;
+                        door.TargetEntityId = levelConnection.Value.EntityIid;
 
-                        var doorSprite = new Sprite(TextureKey.ScifiTiles) { Position = doorAt };
-                        doorSprite.Play("door-closed");
+                        var doorSprite = new Render(TextureKey.Empty) { Position = doorAt };
+                        //doorSprite.SetSource(new Rectangle(8 * 5, 8 * 31, 8, 8));
+                        doorSprite.OriginPos = Render.OriginAlignment.LeftTop;
+
                         world.Create(door, doorSprite, new StructureLayer());
-
-                        Console.WriteLine("here");
                     }
                 }
 
