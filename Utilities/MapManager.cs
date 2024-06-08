@@ -163,8 +163,8 @@ namespace LastLaugh.Utilities
                         var dialogueKey = dialogueKeyRaw.Value.String;
 
                         var sprite = new Sprite(TextureKey.Player) { Position = position };
-
-                        sprite.Play("merchant");
+                            
+                        sprite.Play("king");
 
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
 

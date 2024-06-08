@@ -1,0 +1,88 @@
+[
+  {
+    "Key": "king-1",
+    "Lines": [
+      {
+        "Speaker": "King Otto",
+        "Text": "Hi Jane, thanks for coming."
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "What do you need your highness?"
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "I am hosting a party tonight and I need my most useless member of the court to invite the village"
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "OK, let me go and get Sylvia"
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "No, my 2 month old Daughter would be useless, but I meant you. "
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Oh.. That's flattering, I'm your jester, don't you need me to keep you entertained?"
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "You'll be doing enough of that at the party. Also, you aren't my jester, you're my backup."
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "I'm way more entertaining than Sneako!"
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "That's not true, he's funny, cool and can juggle. You just make passive aggressive comments."
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Thanks for the feedback! Much appreciated.."
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": " I rest my case. Anyway, we will be having lots of fun and events for all. \nMake sure to invite everyone."
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "How could I forget?! We will be voting for our favourite court jester at the party. \nThis is your chance to prove you're the better one."
+      },
+      {
+        "Speaker": "Random Guard",
+        "Text": "Don't forget the big beheading too!"
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "What?"
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "What?"
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "..."
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "..."
+      },
+      {
+        "Speaker": "King Otto",
+        "Text": "Stop wasting valuable time here! You need to go and invite the town! There's only 5 hours until it starts! "
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      }
+    ]
+  }
+]
+    

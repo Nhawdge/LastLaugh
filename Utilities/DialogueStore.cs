@@ -7,12 +7,41 @@ namespace LastLaugh.Utilities
     internal class DialogueStore
     {
         internal static DialogueStore Instance { get; } = new();
+        internal Dictionary<string, TextureKey> PortraitKeyMap = new();
 
         internal Dictionary<string, DialogueData> Dialogues;
 
-        internal DialogueData GetDialogue(string id)
+        private DialogueStore()
         {
-            return Dialogues[id];
+            Dialogues = new();
+            var allFiles = Directory.GetFiles("Assets/Content/Dialogues", "*.json");
+            foreach (var file in allFiles)
+            {
+                var dataText = File.ReadAllText(file);
+                var dialogues = DialogueData.FromJson(dataText).ToDictionary(x => x.Key, x => x);
+                foreach (var dialogue in dialogues)
+                {
+                    Dialogues.Add(dialogue.Key, dialogue.Value);
+                }
+            }
+
+            PortraitKeyMap.Add("jane foole", TextureKey.PortraitPlayer);
+            PortraitKeyMap.Add("king otto", TextureKey.PortraitKing);
+
+        }
+
+        internal static TextureKey GetPortrait(string key)
+        {
+            if (DialogueStore.Instance.PortraitKeyMap.TryGetValue(key.ToLower(), out var texture))
+            {
+                return texture;
+            }
+            return TextureKey.Empty;
+        }
+
+        internal static DialogueData GetDialogue(string id)
+        {
+            return DialogueStore.Instance.Dialogues[id];
         }
 
         private List<string> UnlockedKeys = new();
@@ -33,20 +62,6 @@ namespace LastLaugh.Utilities
                 .All(x => UnlockedKeys.Contains(x));
         }
 
-        private DialogueStore()
-        {
-            Dialogues = new();
-            var allFiles = Directory.GetFiles("Assets/Content/Dialogues", "*.json");
-            foreach (var file in allFiles)
-            {
-                var dataText = File.ReadAllText(file);
-                var dialogues = DialogueData.FromJson(dataText).ToDictionary(x => x.Key, x => x);
-                foreach (var dialogue in dialogues)
-                {
-                    Dialogues.Add(dialogue.Key, dialogue.Value);
-                }
-            }
 
-        }
     }
 }

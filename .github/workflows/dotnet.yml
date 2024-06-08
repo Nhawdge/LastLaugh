@@ -23,17 +23,17 @@ jobs:
       uses: vimtor/action-zip@v1
       with:
         files: bin/Release/net8.0/win-x64/publish/
-        dest:  'Idol-Village-win-${{ github.ref_name }}.zip'
+        dest:  'Last-Laugh-win-${{ github.ref_name }}.zip'
     - name: GH Release
       uses: softprops/action-gh-release@v0.1.14
       with:
-        files: 'Idol-Village-win-${{ github.ref_name }}*'
+        files: 'Last-Laugh-win-${{ github.ref_name }}*'
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3
       with:
-        name: 'Idol-Village-win-${{ github.ref_name }}.zip'
-        path: 'Idol-Village-win-${{ github.ref_name }}.zip'        
+        name: 'Last-Laugh-win-${{ github.ref_name }}.zip'
+        path: 'Last-Laugh-win-${{ github.ref_name }}.zip'
         retention-days: 1
 
    
@@ -50,15 +50,15 @@ jobs:
 #       uses: actions/download-artifact@v2.1.1
 #       with:
 #         # Artifact name
-#         name: 'Idol-Village-win-${{ github.ref_name }}.zip'
-#         path: 'Idol-Village-win-${{ github.ref_name }}.zip'
+#         name: 'Last-Laugh-win-${{ github.ref_name }}.zip'
+#         path: 'Last-Laugh-win-${{ github.ref_name }}.zip'
 #     - name: Itch.io - Publish
 #       uses: KikimoraGames/itch-publish@v0.0.3
 #       with:
 #           butlerApiKey: ${{ secrets.BUTLER_CREDENTIALS }}
-#           gameData: 'Idol-Village-win-${{ github.ref_name }}.zip'
+#           gameData: 'Last-Laugh-win-${{ github.ref_name }}.zip'
 #           itchUsername: nhawdge
-#           itchGameId: Idol-Village
+#           itchGameId: Last-Laugh
 #           buildChannel: windows
 #           buildNumber: ${{ github.ref_name }}    
     

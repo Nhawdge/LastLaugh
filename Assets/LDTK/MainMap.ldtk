@@ -725,9 +725,9 @@
 									"id": "V_String",
 									"params": ["Steve"]
 								}] },
-								{ "__identifier": "DialogueKey", "__type": "String", "__value": "npc0", "__tile": null, "defUid": 22, "realEditorValues": [{
+								{ "__identifier": "DialogueKey", "__type": "String", "__value": "king-1", "__tile": null, "defUid": 22, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["npc0"]
+									"params": ["king-1"]
 								}] }
 							],
 							"__worldX": 96,

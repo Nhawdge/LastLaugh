@@ -39,7 +39,7 @@ namespace LastLaugh.Scenes.World1.Systems
             if (Singleton.Instance.ActiveDialogue != null)
             {
                 var currentDialogue = Singleton.Instance.ActiveDialogue.Lines[Singleton.Instance.ActiveDialogueIndex];
-                var texture = currentDialogue.Speaker.ToLower() == "player" ? TextureKey.PortraitPlayer : TextureKey.PortraitNpc1;
+                var texture = DialogueStore.GetPortrait(currentDialogue.Speaker);
                 var portrait = TextureManager.Instance.TextureStore[texture];
 
                 Raylib.DrawRectangle(0, Raylib.GetScreenHeight() - 200, Raylib.GetScreenWidth(), 200, Raylib.Fade(Color.Black, 0.5f));
@@ -106,7 +106,7 @@ namespace LastLaugh.Scenes.World1.Systems
                         }
                         else
                         {
-                            Singleton.Instance.ActiveDialogue = DialogueStore.Instance.GetDialogue(key);
+                            Singleton.Instance.ActiveDialogue = DialogueStore.GetDialogue(key);
                         }
                         Singleton.Instance.ActiveDialogueIndex = 0;
                     }

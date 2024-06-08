@@ -25,6 +25,7 @@ namespace LastLaugh.Utilities
             FilePathMapping.Add(TextureKey.RaylibLogo, "Assets/raylib_logo_animation");
             FilePathMapping.Add(TextureKey.Player, "Assets/Art/Units");
             FilePathMapping.Add(TextureKey.PortraitPlayer, "Assets/Art/portraitplayer");
+            FilePathMapping.Add(TextureKey.PortraitKing, "Assets/Art/king1");
             FilePathMapping.Add(TextureKey.PortraitNpc1, "Assets/Art/portraitnpc1");
 
             FilePathMapping.Add(TextureKey.Tiles, "Assets/LDTK/Art/Overworld");
@@ -85,5 +86,6 @@ namespace LastLaugh.Utilities
         Walls,
         PortraitPlayer,
         PortraitNpc1,
+        PortraitKing,
     }
 }
