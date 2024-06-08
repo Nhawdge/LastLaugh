@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Nodes;
-using QuickType.Dialogue;
+﻿using QuickType.Dialogue;
 
 namespace LastLaugh.Utilities
 {
@@ -25,9 +23,10 @@ namespace LastLaugh.Utilities
                 }
             }
 
+            // These tie to speaker name in dialogue json files
             PortraitKeyMap.Add("jane foole", TextureKey.PortraitPlayer);
             PortraitKeyMap.Add("king otto", TextureKey.PortraitKing);
-
+            PortraitKeyMap.Add("random guard", TextureKey.PortraitGuard1);
         }
 
         internal static TextureKey GetPortrait(string key)

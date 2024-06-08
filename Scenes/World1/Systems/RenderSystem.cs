@@ -39,6 +39,23 @@ namespace LastLaugh.Scenes.World1.Systems
                     render.Draw();
                 }
             });
+         
+            var query4 = new QueryDescription().WithAll<UnitLayer>();
+            world.Query(in query4, (entity) =>
+            {
+                if (entity.Has<Render>())
+                {
+                    var render = entity.Get<Render>();
+                    render.Draw();
+                }
+                else if (entity.Has<Sprite>())
+                {
+                    var render = entity.Get<Sprite>();
+                    render.Draw();
+
+                }
+            });
+
             var query3 = new QueryDescription().WithAll<StructureLayer>();
             world.Query(in query3, (entity) =>
             {
@@ -51,22 +68,6 @@ namespace LastLaugh.Scenes.World1.Systems
                 {
                     var render = entity.Get<Sprite>();
                     render.Draw();
-                }
-            });
-            var query4 = new QueryDescription().WithAll<UnitLayer>();
-            world.Query(in query4, (entity) =>
-            {
-                if (entity.Has<Render>())
-                {
-                    var render = entity.Get<Render>();
-                    render.Draw();
-                }
-                else if (entity.Has<Sprite>())
-                {
-                    var render = entity.Get<Sprite>();
-                    //Raylib.DrawRectangleRec(render.CollisionDestination, Color.Purple);
-                    render.Draw();
-                    //Raylib.DrawCircleV(render.GetCollider(CollisionDetectors.Center), 5, Color.Red);
                 }
             });
             var query5 = new QueryDescription().WithAll<SkyLayer>();

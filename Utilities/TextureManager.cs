@@ -23,10 +23,12 @@ namespace LastLaugh.Utilities
         {
             FilePathMapping.Add(TextureKey.Empty, "");
             FilePathMapping.Add(TextureKey.RaylibLogo, "Assets/raylib_logo_animation");
-            FilePathMapping.Add(TextureKey.Player, "Assets/Art/Units");
-            FilePathMapping.Add(TextureKey.PortraitPlayer, "Assets/Art/portraitplayer");
-            FilePathMapping.Add(TextureKey.PortraitKing, "Assets/Art/king1");
-            FilePathMapping.Add(TextureKey.PortraitNpc1, "Assets/Art/portraitnpc1");
+            FilePathMapping.Add(TextureKey.Units, "Assets/Art/Units");
+            FilePathMapping.Add(TextureKey.PortraitPlayer, "Assets/Art/Portraits/player1");
+            FilePathMapping.Add(TextureKey.PortraitKing, "Assets/Art/Portraits/king1");
+            FilePathMapping.Add(TextureKey.PortraitNpc1, "Assets/Art/Portraits/npc1");
+            FilePathMapping.Add(TextureKey.PortraitMerchant1, "Assets/Art/Portraits/merchant1");
+            FilePathMapping.Add(TextureKey.PortraitGuard1, "Assets/Art/Portraits/guard1");
 
             FilePathMapping.Add(TextureKey.Tiles, "Assets/LDTK/Art/Overworld");
             FilePathMapping.Add(TextureKey.Structures, "Assets/LDTK/Art/Structures");
@@ -79,7 +81,7 @@ namespace LastLaugh.Utilities
     {
         Empty,
         RaylibLogo,
-        Player,
+        Units,
         Tiles,
         Structures,
         Interior,
@@ -87,5 +89,7 @@ namespace LastLaugh.Utilities
         PortraitPlayer,
         PortraitNpc1,
         PortraitKing,
+        PortraitMerchant1,
+        PortraitGuard1,
     }
 }

@@ -50,7 +50,16 @@ namespace LastLaugh.Scenes.World1.Systems
             }
             sprite.Force = force * speed;
 
-            sprite.Position += sprite.Force * Raylib.GetFrameTime();
+            var futurepos = sprite.Position + sprite.Force * Raylib.GetFrameTime();
+
+            if (!Singleton.Instance.CollisionGrid
+                .Where(x => x.Value == CollisionType.Solid)
+                .Any(grid => Raylib.CheckCollisionCircleRec(futurepos, 1, grid.Key))
+                )
+            {   
+                sprite.Position = futurepos;
+            }
+
         }
     }
 }

@@ -5,16 +5,20 @@ using LastLaugh.Scenes.Components;
 using LastLaugh.Scenes.World1.Data;
 using LastLaugh.Utilities;
 using System.Numerics;
-using System.Security;
 
 namespace LastLaugh.Scenes.World1.Systems
 {
     internal class DialogueSystem : GameSystem
     {
-        internal override void Update(World world)
+        internal override void Update(World world) { }
+        internal override void UpdateNoCamera(World world)
         {
             var player = world.QueryFirst<Player>();
             var playerSprite = player.Get<Sprite>();
+
+            var text = "Press E to chat";
+            var fontSize = 20;
+            var textSize = Raylib.MeasureText(text, fontSize);
 
             var query = new QueryDescription().WithAll<Npc>();
 
@@ -25,16 +29,21 @@ namespace LastLaugh.Scenes.World1.Systems
                     var npc = entity.Get<Npc>();
                     var sprite = entity.Get<Sprite>();
 
-                    if (Raylib.CheckCollisionRecs(playerSprite.CollisionDestination, sprite.CollisionDestination) && Raylib.IsKeyPressed(KeyboardKey.E))
+                    var center = new Vector2(Raylib.GetScreenWidth() / 2 - textSize / 2, Raylib.GetScreenHeight() / 4 * 3);
+                    if (Raylib.CheckCollisionRecs(playerSprite.CollisionDestination, sprite.CollisionDestination))
                     {
-                        Singleton.Instance.ActiveDialogue = DialogueStore.Instance.Dialogues.First(x => x.Key == npc.DialogueKey).Value;
-                        Singleton.Instance.ActiveDialogueIndex = 0;
+                        Raylib.DrawText(text, (int)center.X, (int)center.Y, fontSize, Raylib.Fade(Color.White, 0.75f));
+
+                        if (Raylib.IsKeyPressed(KeyboardKey.E))
+                        {
+
+                            Singleton.Instance.ActiveDialogue = DialogueStore.Instance.Dialogues.First(x => x.Key == npc.DialogueKey).Value;
+                            Singleton.Instance.ActiveDialogueIndex = 0;
+                        }
                     }
                 });
             }
-        }
-        internal override void UpdateNoCamera(World world)
-        {
+
 
             if (Singleton.Instance.ActiveDialogue != null)
             {

@@ -26,6 +26,7 @@ namespace LastLaugh.Utilities
             var data = LdtkData.FromJson(mapFile);
 
             LevelIdMap = data.Levels.ToDictionary(x => x.Iid, x => x.Identifier);
+            var LayersMap = data.Defs.Layers.ToDictionary(x => x.Identifier, x => x.UiFilterTags.FirstOrDefault());
 
             var level = data.Levels.FirstOrDefault(x => x.Identifier == key);
 
@@ -43,27 +44,34 @@ namespace LastLaugh.Utilities
             foreach (var layer in level.LayerInstances)
             {
                 Console.WriteLine($"Layer: {layer.Identifier}");
-                if (layer.Identifier == "Ground")
+                if (layer.GridTiles.Any())
                 {
+                    var layerTag = LayersMap[layer.Identifier];
+                    var textureKey = TextureManager.Instance.FilePathMapping.First(x => x.Value.Contains(layer.TilesetRelPath.Replace(".png", ""))).Key;
                     foreach (var tile in layer.GridTiles)
-                    {
-                        var sprite = new Render(TextureKey.Tiles);
-                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                        sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
-                        sprite.Position = tile.Px.ToVector2();
-                        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
-                    }
-                }
-                if (layer.Identifier is "Structures" or "Walls" or "OverworldDecor")
-                {
-                    foreach (var tile in layer.GridTiles)
-                    {
-                        var textureKey = TextureManager.Instance.FilePathMapping.First(x => x.Value.Contains(layer.TilesetRelPath.Replace(".png", ""))).Key;
+                    {   
                         var sprite = new Render(textureKey);
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
                         sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
                         sprite.Position = tile.Px.ToVector2();
-                        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
+
+                        switch (layerTag)
+                        {
+                            case "Under":
+                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new UnderLayer());
+                                break;
+                            case "Ground":
+                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
+                                break;
+                            case "Structure":
+                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
+                                break;
+                            case "Sky":
+                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new SkyLayer());
+                                break;
+                            default:
+                                throw new NotImplementedException();
+                        }
                     }
                 }
 
@@ -153,15 +161,16 @@ namespace LastLaugh.Utilities
                     if (entity.Identifier == "NPC")
                     {
                         var position = entity.Px.ToVector2();
+                        var sprite = new Sprite(TextureKey.Units) { Position = position };
+                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
+
+                        var nameRaw = entity.FieldInstances.First(x => x.Identifier == "Name");
+                        var name = nameRaw.Value.String;
+
+                        sprite.Play(name);
 
                         var dialogueKeyRaw = entity.FieldInstances.First(x => x.Identifier == "DialogueKey");
                         var dialogueKey = dialogueKeyRaw.Value.String;
-
-                        var sprite = new Sprite(TextureKey.Player) { Position = position };
-
-                        sprite.Play("king");
-
-                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
 
                         world.Create(sprite, new UnitLayer(), new Npc() { DialogueKey = dialogueKey });
                     }

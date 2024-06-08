@@ -1,0 +1,28 @@
+[
+  {
+    "Key": "well-1",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "You look into the well and hear what sounds like a child screaming for help"
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Oh well, children can't vote"
+      },
+      {
+        "Speaker": "",
+        "Text": ""
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      }
+    ]
+  }
+]
+    

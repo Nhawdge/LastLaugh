@@ -385,13 +385,13 @@ namespace QuickType.Map
     public partial class Layer
     {
         [JsonPropertyName("__type")]
-        public string Type { get; set; }
+        public TypeEnum Type { get; set; }
 
         [JsonPropertyName("identifier")]
         public string Identifier { get; set; }
 
         [JsonPropertyName("type")]
-        public string LayerType { get; set; }
+        public TypeEnum LayerType { get; set; }
 
         [JsonPropertyName("uid")]
         public long Uid { get; set; }
@@ -400,7 +400,7 @@ namespace QuickType.Map
         public object Doc { get; set; }
 
         [JsonPropertyName("uiColor")]
-        public object UiColor { get; set; }
+        public string UiColor { get; set; }
 
         [JsonPropertyName("gridSize")]
         public long GridSize { get; set; }
@@ -412,7 +412,7 @@ namespace QuickType.Map
         public long GuideGridHei { get; set; }
 
         [JsonPropertyName("displayOpacity")]
-        public long DisplayOpacity { get; set; }
+        public double DisplayOpacity { get; set; }
 
         [JsonPropertyName("inactiveOpacity")]
         public double InactiveOpacity { get; set; }
@@ -454,13 +454,13 @@ namespace QuickType.Map
         public object AutoTilesKilledByOtherLayerUid { get; set; }
 
         [JsonPropertyName("uiFilterTags")]
-        public object[] UiFilterTags { get; set; }
+        public string[] UiFilterTags { get; set; }
 
         [JsonPropertyName("useAsyncRender")]
         public bool UseAsyncRender { get; set; }
 
         [JsonPropertyName("intGridValues")]
-        public object[] IntGridValues { get; set; }
+        public IntGridValue[] IntGridValues { get; set; }
 
         [JsonPropertyName("intGridValuesGroups")]
         public object[] IntGridValuesGroups { get; set; }
@@ -482,6 +482,24 @@ namespace QuickType.Map
 
         [JsonPropertyName("biomeFieldUid")]
         public object BiomeFieldUid { get; set; }
+    }
+
+    public partial class IntGridValue
+    {
+        [JsonPropertyName("value")]
+        public long Value { get; set; }
+
+        [JsonPropertyName("identifier")]
+        public object Identifier { get; set; }
+
+        [JsonPropertyName("color")]
+        public string Color { get; set; }
+
+        [JsonPropertyName("tile")]
+        public object Tile { get; set; }
+
+        [JsonPropertyName("groupUid")]
+        public long GroupUid { get; set; }
     }
 
     public partial class Tileset
@@ -643,7 +661,7 @@ namespace QuickType.Map
         public string Identifier { get; set; }
 
         [JsonPropertyName("__type")]
-        public string Type { get; set; }
+        public TypeEnum Type { get; set; }
 
         [JsonPropertyName("__cWid")]
         public long CWid { get; set; }
@@ -655,7 +673,7 @@ namespace QuickType.Map
         public long GridSize { get; set; }
 
         [JsonPropertyName("__opacity")]
-        public long Opacity { get; set; }
+        public double Opacity { get; set; }
 
         [JsonPropertyName("__pxTotalOffsetX")]
         public long PxTotalOffsetX { get; set; }
@@ -691,7 +709,7 @@ namespace QuickType.Map
         public object[] OptionalRules { get; set; }
 
         [JsonPropertyName("intGridCsv")]
-        public object[] IntGridCsv { get; set; }
+        public long[] IntGridCsv { get; set; }
 
         [JsonPropertyName("autoLayerTiles")]
         public object[] AutoLayerTiles { get; set; }
@@ -829,6 +847,8 @@ namespace QuickType.Map
         public string Dir { get; set; }
     }
 
+    public enum TypeEnum { Entities, IntGrid, Tiles };
+
     public partial struct ValueUnion
     {
         public string String;
@@ -854,12 +874,52 @@ namespace QuickType.Map
         {
             Converters =
             {
+                TypeEnumConverter.Singleton,
                 ValueUnionConverter.Singleton,
                 new DateOnlyConverter(),
                 new TimeOnlyConverter(),
                 IsoDateTimeOffsetConverter.Singleton
             },
         };
+    }
+
+    internal class TypeEnumConverter : JsonConverter<TypeEnum>
+    {
+        public override bool CanConvert(Type t) => t == typeof(TypeEnum);
+
+        public override TypeEnum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = reader.GetString();
+            switch (value)
+            {
+                case "Entities":
+                    return TypeEnum.Entities;
+                case "IntGrid":
+                    return TypeEnum.IntGrid;
+                case "Tiles":
+                    return TypeEnum.Tiles;
+            }
+            throw new Exception("Cannot unmarshal type TypeEnum");
+        }
+
+        public override void Write(Utf8JsonWriter writer, TypeEnum value, JsonSerializerOptions options)
+        {
+            switch (value)
+            {
+                case TypeEnum.Entities:
+                    JsonSerializer.Serialize(writer, "Entities", options);
+                    return;
+                case TypeEnum.IntGrid:
+                    JsonSerializer.Serialize(writer, "IntGrid", options);
+                    return;
+                case TypeEnum.Tiles:
+                    JsonSerializer.Serialize(writer, "Tiles", options);
+                    return;
+            }
+            throw new Exception("Cannot marshal type TypeEnum");
+        }
+
+        public static readonly TypeEnumConverter Singleton = new TypeEnumConverter();
     }
 
     internal class ValueUnionConverter : JsonConverter<ValueUnion>
