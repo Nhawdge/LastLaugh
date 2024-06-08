@@ -21,9 +21,11 @@ namespace LastLaugh.Scenes.World1.Systems
             {
                 var doorway = entity.Get<Doorway>();
                 var doorSprite = entity.Get<Render>();
+                //Console.WriteLine($"distance to player {doorSprite.Position.DistanceTo(playerSprite.Position)}");
 
                 if (Raylib.CheckCollisionRecs(playerSprite.CollisionDestination, doorSprite.CollisionDestination) && Raylib.IsKeyPressed(KeyboardKey.E))
                 {
+                    Console.WriteLine("Teleporting");
                     shouldTeleport = true;
                     teleTask = () => LastLaughEngine.Instance.ActiveScene = new World1Scene(doorway.LevelId, doorway.TargetEntityId);
                 }

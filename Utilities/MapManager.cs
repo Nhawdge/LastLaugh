@@ -49,40 +49,35 @@ namespace LastLaugh.Utilities
                     {
                         var sprite = new Render(TextureKey.Tiles);
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                        //sprite.SourceX = (int)tile.Src[0];
-                        //sprite.SourceY = (int)tile.Src[1];
                         sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
                         sprite.Position = tile.Px.ToVector2();
                         world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
                     }
                 }
-                if (layer.Identifier == "Structures")
+                if (layer.Identifier is "Structures" or "Walls" or "OverworldDecor")
                 {
                     foreach (var tile in layer.GridTiles)
                     {
-                        var sprite = new Render(TextureKey.Structures);
+                        var textureKey = TextureManager.Instance.FilePathMapping.First(x => x.Value.Contains(layer.TilesetRelPath.Replace(".png", ""))).Key;
+                        var sprite = new Render(textureKey);
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                        //sprite.SourceX = (int)tile.Src[0];
-                        //sprite.SourceY = (int)tile.Src[1];
                         sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
                         sprite.Position = tile.Px.ToVector2();
                         world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
                     }
                 }
 
-                if (layer.Identifier == "Walls")
-                {
-                    foreach (var tile in layer.GridTiles)
-                    {
-                        var sprite = new Render(TextureKey.Walls);
-                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                        //sprite.SourceX = (int)tile.Src[0];
-                        //sprite.SourceY = (int)tile.Src[1];
-                        sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
-                        sprite.Position = tile.Px.ToVector2();
-                        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
-                    }
-                }
+                //if (layer.Identifier == "Walls")
+                //{
+                //    foreach (var tile in layer.GridTiles)
+                //    {
+                //        var sprite = new Render(TextureKey.Walls);
+                //        sprite.OriginPos = Render.OriginAlignment.LeftTop;
+                //        sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
+                //        sprite.Position = tile.Px.ToVector2();
+                //        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
+                //    }
+                //}
                 //if (layer.Identifier == "AutoTiles")
                 //{
                 //    foreach (var tile in layer.AutoLayerTiles)
@@ -158,12 +153,12 @@ namespace LastLaugh.Utilities
                     if (entity.Identifier == "NPC")
                     {
                         var position = entity.Px.ToVector2();
-                        
+
                         var dialogueKeyRaw = entity.FieldInstances.First(x => x.Identifier == "DialogueKey");
                         var dialogueKey = dialogueKeyRaw.Value.String;
 
                         var sprite = new Sprite(TextureKey.Player) { Position = position };
-                            
+
                         sprite.Play("king");
 
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
