@@ -30,14 +30,19 @@ namespace LastLaugh.Scenes.World1.Systems
                     var sprite = entity.Get<Sprite>();
 
                     var center = new Vector2(Raylib.GetScreenWidth() / 2 - textSize / 2, Raylib.GetScreenHeight() / 4 * 3);
-                    if (Raylib.CheckCollisionRecs(playerSprite.CollisionDestination, sprite.CollisionDestination))
+                    if (Raylib.CheckCollisionRecs(playerSprite.CollisionDestination, sprite.CollisionDestination) && !string.IsNullOrEmpty(npc.DialogueKey))
                     {
                         Raylib.DrawText(text, (int)center.X, (int)center.Y, fontSize, Raylib.Fade(Color.White, 0.75f));
 
                         if (Raylib.IsKeyPressed(KeyboardKey.E))
                         {
+                            var selectedDialogue = DialogueStore.Instance.Dialogues.FirstOrDefault(x => x.Key == npc.DialogueKey);
+                            if (selectedDialogue.Value == null)
+                            {
+                                return;
+                            }
+                            Singleton.Instance.ActiveDialogue = selectedDialogue.Value;
 
-                            Singleton.Instance.ActiveDialogue = DialogueStore.Instance.Dialogues.First(x => x.Key == npc.DialogueKey).Value;
                             Singleton.Instance.ActiveDialogueIndex = 0;
                         }
                     }

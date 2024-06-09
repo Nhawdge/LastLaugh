@@ -157,7 +157,7 @@ namespace QuickType.Map
     public partial class Entity
     {
         [JsonPropertyName("identifier")]
-        public string Identifier { get; set; }
+        public EntityIdentifier Identifier { get; set; }
 
         [JsonPropertyName("uid")]
         public long Uid { get; set; }
@@ -214,7 +214,7 @@ namespace QuickType.Map
         public bool Hollow { get; set; }
 
         [JsonPropertyName("color")]
-        public string Color { get; set; }
+        public Color Color { get; set; }
 
         [JsonPropertyName("renderMode")]
         public string RenderMode { get; set; }
@@ -259,13 +259,13 @@ namespace QuickType.Map
     public partial class FieldDef
     {
         [JsonPropertyName("identifier")]
-        public string Identifier { get; set; }
+        public FieldDefIdentifier Identifier { get; set; }
 
         [JsonPropertyName("doc")]
         public object Doc { get; set; }
 
         [JsonPropertyName("__type")]
-        public string Type { get; set; }
+        public FieldDefType Type { get; set; }
 
         [JsonPropertyName("uid")]
         public long Uid { get; set; }
@@ -745,7 +745,7 @@ namespace QuickType.Map
         public Tile Tile { get; set; }
 
         [JsonPropertyName("__smartColor")]
-        public string SmartColor { get; set; }
+        public Color SmartColor { get; set; }
 
         [JsonPropertyName("iid")]
         public Guid Iid { get; set; }
@@ -778,7 +778,7 @@ namespace QuickType.Map
         public string Identifier { get; set; }
 
         [JsonPropertyName("__type")]
-        public string Type { get; set; }
+        public FieldDefType Type { get; set; }
 
         [JsonPropertyName("__value")]
         public ValueUnion Value { get; set; }
@@ -796,7 +796,7 @@ namespace QuickType.Map
     public partial class RealEditorValue
     {
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public Id Id { get; set; }
 
         [JsonPropertyName("params")]
         public string[] Params { get; set; }
@@ -847,7 +847,17 @@ namespace QuickType.Map
         public string Dir { get; set; }
     }
 
+    public enum Color { Be4A2F, D77643, Ead4Aa };
+
+    public enum FieldDefIdentifier { Destination, DialogueKey, Name };
+
+    public enum FieldDefType { EntityRef, String };
+
+    public enum EntityIdentifier { Doorway, Npc, PlayerSpawn };
+
     public enum TypeEnum { Entities, IntGrid, Tiles };
+
+    public enum Id { VString };
 
     public partial struct ValueUnion
     {
@@ -856,6 +866,7 @@ namespace QuickType.Map
 
         public static implicit operator ValueUnion(string String) => new ValueUnion { String = String };
         public static implicit operator ValueUnion(ValueClass ValueClass) => new ValueUnion { ValueClass = ValueClass };
+        public bool IsNull => ValueClass == null && String == null;
     }
 
     public partial class LdtkData
@@ -874,13 +885,169 @@ namespace QuickType.Map
         {
             Converters =
             {
+                ColorConverter.Singleton,
+                FieldDefTypeConverter.Singleton,
+                FieldDefIdentifierConverter.Singleton,
+                EntityIdentifierConverter.Singleton,
                 TypeEnumConverter.Singleton,
                 ValueUnionConverter.Singleton,
+                IdConverter.Singleton,
                 new DateOnlyConverter(),
                 new TimeOnlyConverter(),
                 IsoDateTimeOffsetConverter.Singleton
             },
         };
+    }
+
+    internal class ColorConverter : JsonConverter<Color>
+    {
+        public override bool CanConvert(Type t) => t == typeof(Color);
+
+        public override Color Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = reader.GetString();
+            switch (value)
+            {
+                case "#BE4A2F":
+                    return Color.Be4A2F;
+                case "#D77643":
+                    return Color.D77643;
+                case "#EAD4AA":
+                    return Color.Ead4Aa;
+            }
+            throw new Exception("Cannot unmarshal type Color");
+        }
+
+        public override void Write(Utf8JsonWriter writer, Color value, JsonSerializerOptions options)
+        {
+            switch (value)
+            {
+                case Color.Be4A2F:
+                    JsonSerializer.Serialize(writer, "#BE4A2F", options);
+                    return;
+                case Color.D77643:
+                    JsonSerializer.Serialize(writer, "#D77643", options);
+                    return;
+                case Color.Ead4Aa:
+                    JsonSerializer.Serialize(writer, "#EAD4AA", options);
+                    return;
+            }
+            throw new Exception("Cannot marshal type Color");
+        }
+
+        public static readonly ColorConverter Singleton = new ColorConverter();
+    }
+
+    internal class FieldDefTypeConverter : JsonConverter<FieldDefType>
+    {
+        public override bool CanConvert(Type t) => t == typeof(FieldDefType);
+
+        public override FieldDefType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = reader.GetString();
+            switch (value)
+            {
+                case "EntityRef":
+                    return FieldDefType.EntityRef;
+                case "String":
+                    return FieldDefType.String;
+            }
+            throw new Exception("Cannot unmarshal type FieldDefType");
+        }
+
+        public override void Write(Utf8JsonWriter writer, FieldDefType value, JsonSerializerOptions options)
+        {
+            switch (value)
+            {
+                case FieldDefType.EntityRef:
+                    JsonSerializer.Serialize(writer, "EntityRef", options);
+                    return;
+                case FieldDefType.String:
+                    JsonSerializer.Serialize(writer, "String", options);
+                    return;
+            }
+            throw new Exception("Cannot marshal type FieldDefType");
+        }
+
+        public static readonly FieldDefTypeConverter Singleton = new FieldDefTypeConverter();
+    }
+
+    internal class FieldDefIdentifierConverter : JsonConverter<FieldDefIdentifier>
+    {
+        public override bool CanConvert(Type t) => t == typeof(FieldDefIdentifier);
+
+        public override FieldDefIdentifier Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = reader.GetString();
+            switch (value)
+            {
+                case "Destination":
+                    return FieldDefIdentifier.Destination;
+                case "DialogueKey":
+                    return FieldDefIdentifier.DialogueKey;
+                case "Name":
+                    return FieldDefIdentifier.Name;
+            }
+            throw new Exception("Cannot unmarshal type FieldDefIdentifier");
+        }
+
+        public override void Write(Utf8JsonWriter writer, FieldDefIdentifier value, JsonSerializerOptions options)
+        {
+            switch (value)
+            {
+                case FieldDefIdentifier.Destination:
+                    JsonSerializer.Serialize(writer, "Destination", options);
+                    return;
+                case FieldDefIdentifier.DialogueKey:
+                    JsonSerializer.Serialize(writer, "DialogueKey", options);
+                    return;
+                case FieldDefIdentifier.Name:
+                    JsonSerializer.Serialize(writer, "Name", options);
+                    return;
+            }
+            throw new Exception("Cannot marshal type FieldDefIdentifier");
+        }
+
+        public static readonly FieldDefIdentifierConverter Singleton = new FieldDefIdentifierConverter();
+    }
+
+    internal class EntityIdentifierConverter : JsonConverter<EntityIdentifier>
+    {
+        public override bool CanConvert(Type t) => t == typeof(EntityIdentifier);
+
+        public override EntityIdentifier Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = reader.GetString();
+            switch (value)
+            {
+                case "Doorway":
+                    return EntityIdentifier.Doorway;
+                case "NPC":
+                    return EntityIdentifier.Npc;
+                case "Player_Spawn":
+                    return EntityIdentifier.PlayerSpawn;
+            }
+            throw new Exception("Cannot unmarshal type EntityIdentifier");
+        }
+
+        public override void Write(Utf8JsonWriter writer, EntityIdentifier value, JsonSerializerOptions options)
+        {
+            switch (value)
+            {
+                case EntityIdentifier.Doorway:
+                    JsonSerializer.Serialize(writer, "Doorway", options);
+                    return;
+                case EntityIdentifier.Npc:
+                    JsonSerializer.Serialize(writer, "NPC", options);
+                    return;
+                case EntityIdentifier.PlayerSpawn:
+                    JsonSerializer.Serialize(writer, "Player_Spawn", options);
+                    return;
+            }
+            throw new Exception("Cannot marshal type EntityIdentifier");
+        }
+
+        public static readonly EntityIdentifierConverter Singleton = new EntityIdentifierConverter();
     }
 
     internal class TypeEnumConverter : JsonConverter<TypeEnum>
@@ -930,6 +1097,8 @@ namespace QuickType.Map
         {
             switch (reader.TokenType)
             {
+                case JsonTokenType.Null:
+                    return new ValueUnion { };
                 case JsonTokenType.String:
                     var stringValue = reader.GetString();
                     return new ValueUnion { String = stringValue };
@@ -942,6 +1111,11 @@ namespace QuickType.Map
 
         public override void Write(Utf8JsonWriter writer, ValueUnion value, JsonSerializerOptions options)
         {
+            if (value.IsNull)
+            {
+                writer.WriteNullValue();
+                return;
+            }
             if (value.String != null)
             {
                 JsonSerializer.Serialize(writer, value.String, options);
@@ -956,6 +1130,33 @@ namespace QuickType.Map
         }
 
         public static readonly ValueUnionConverter Singleton = new ValueUnionConverter();
+    }
+
+    internal class IdConverter : JsonConverter<Id>
+    {
+        public override bool CanConvert(Type t) => t == typeof(Id);
+
+        public override Id Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = reader.GetString();
+            if (value == "V_String")
+            {
+                return Id.VString;
+            }
+            throw new Exception("Cannot unmarshal type Id");
+        }
+
+        public override void Write(Utf8JsonWriter writer, Id value, JsonSerializerOptions options)
+        {
+            if (value == Id.VString)
+            {
+                JsonSerializer.Serialize(writer, "V_String", options);
+                return;
+            }
+            throw new Exception("Cannot marshal type Id");
+        }
+
+        public static readonly IdConverter Singleton = new IdConverter();
     }
 
     public class DateOnlyConverter : JsonConverter<DateOnly>

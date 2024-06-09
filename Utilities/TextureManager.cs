@@ -34,6 +34,8 @@ namespace LastLaugh.Utilities
             FilePathMapping.Add(TextureKey.Structures, "Assets/LDTK/Art/Structures");
             FilePathMapping.Add(TextureKey.Walls, "Assets/LDTK/Art/Walls");
             FilePathMapping.Add(TextureKey.Interior, "Assets/LDTK/Art/Interior");
+            FilePathMapping.Add(TextureKey.Furniture, "Assets/LDTK/Art/Furniture");
+            FilePathMapping.Add(TextureKey.Decorations, "Assets/LDTK/Art/Decorations");
         }
 
         private void LoadTextures()
@@ -91,5 +93,7 @@ namespace LastLaugh.Utilities
         PortraitKing,
         PortraitMerchant1,
         PortraitGuard1,
+        Furniture,
+        Decorations,
     }
 }

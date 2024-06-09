@@ -139,8 +139,8 @@ namespace LastLaugh.Utilities
                         playerLoadAt = entity.Px.ToVector2();
                         PlayerUtilities.BuildPlayer(world, playerLoadAt);
                         Console.WriteLine($"Found Player Spawn at {playerLoadAt}");
-                    }
-                    if (entity.Identifier == "Doorway")
+                    }  
+                    if (entity.Identifier == "Doorway")  
                     {
                         var doorAt = entity.Px.ToVector2();
                         var door = new Doorway(doorAt);
