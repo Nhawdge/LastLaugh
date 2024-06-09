@@ -49,7 +49,7 @@ namespace LastLaugh.Utilities
                     var layerTag = LayersMap[layer.Identifier];
                     var textureKey = TextureManager.Instance.FilePathMapping.First(x => x.Value.Contains(layer.TilesetRelPath.Replace(".png", ""))).Key;
                     foreach (var tile in layer.GridTiles)
-                    {   
+                    {
                         var sprite = new Render(textureKey);
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
                         sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
@@ -139,8 +139,8 @@ namespace LastLaugh.Utilities
                         playerLoadAt = entity.Px.ToVector2();
                         PlayerUtilities.BuildPlayer(world, playerLoadAt);
                         Console.WriteLine($"Found Player Spawn at {playerLoadAt}");
-                    }  
-                    if (entity.Identifier == "Doorway")  
+                    }
+                    if (entity.Identifier == "Doorway")      
                     {
                         var doorAt = entity.Px.ToVector2();
                         var door = new Doorway(doorAt);
