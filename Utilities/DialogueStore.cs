@@ -31,7 +31,7 @@ namespace LastLaugh.Utilities
 
         internal static TextureKey GetPortrait(string key)
         {
-            if (DialogueStore.Instance.PortraitKeyMap.TryGetValue(key.ToLower(), out var texture))
+            if (Instance.PortraitKeyMap.TryGetValue(key.ToLower(), out var texture))
             {
                 return texture;
             }
@@ -40,7 +40,7 @@ namespace LastLaugh.Utilities
 
         internal static DialogueData GetDialogue(string id)
         {
-            return DialogueStore.Instance.Dialogues[id];
+            return Instance.Dialogues[id];
         }
 
         private List<string> UnlockedKeys = new();
@@ -48,10 +48,17 @@ namespace LastLaugh.Utilities
         internal void AddUnlockedKey(List<string> keys)
         {
             foreach (var key in keys)
-                if (!UnlockedKeys.Contains(key))
+            {
+                var trimmedKey = key.Trim('-');
+                if (key.StartsWith('-') && UnlockedKeys.Contains(trimmedKey))
+                {
+                    UnlockedKeys.Remove(trimmedKey);
+                }
+                else if (!UnlockedKeys.Contains(key))
                 {
                     UnlockedKeys.Add(key);
                 }
+            }
         }
 
         internal bool HasRequiredKeys(List<string> keys)
@@ -60,7 +67,5 @@ namespace LastLaugh.Utilities
                 .Where(x => !string.IsNullOrEmpty(x) && !string.IsNullOrWhiteSpace(x))
                 .All(x => UnlockedKeys.Contains(x));
         }
-
-
     }
 }

@@ -113,7 +113,6 @@ namespace LastLaugh.Scenes.World1.Systems
 
                         DialogueStore.Instance.AddUnlockedKey(currentOption.CreatedKeys);
 
-                        DialogueStore.Instance.AddUnlockedKey(currentOption.CreatedKeys);
                         if (key == "exit")
                         {
                             Singleton.Instance.ActiveDialogue = null;
