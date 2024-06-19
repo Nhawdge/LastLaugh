@@ -30,7 +30,7 @@ namespace LastLaugh.Scenes.World1.Systems
 
             var force = Vector2.Zero;
 
-            var speed = 50f;
+            var speed = 100f;
 
             if (Raylib.IsKeyDown(KeyboardKey.W))
             {
@@ -50,13 +50,35 @@ namespace LastLaugh.Scenes.World1.Systems
             }
             sprite.Force = force * speed;
 
+            if (force.X > 0)
+            {
+                sprite.Play("walk-r");
+            }
+            else if (force.X < 0)
+            {
+                sprite.Play("walk-l");
+            }
+            else if (force.Y > 0)
+            {
+                sprite.Play("walk-d");
+            }
+            else if (force.Y < 0)
+            {
+                sprite.Play("walk-u");
+            }
+            else
+            {
+                sprite.Play("idle");
+            }
+
+
             var futurepos = sprite.Position + sprite.Force * Raylib.GetFrameTime();
 
             if (!Singleton.Instance.CollisionGrid
                 .Where(x => x.Value == CollisionType.Solid)
                 .Any(grid => Raylib.CheckCollisionCircleRec(futurepos, 1, grid.Key))
                 )
-            {   
+            {
                 sprite.Position = futurepos;
             }
 

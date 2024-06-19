@@ -65,7 +65,19 @@ namespace LastLaugh.Utilities
         {
             return keys
                 .Where(x => !string.IsNullOrEmpty(x) && !string.IsNullOrWhiteSpace(x))
-                .All(x => UnlockedKeys.Contains(x));
+                .All(x =>
+                {
+                    if (x.StartsWith('-'))
+                    {
+                        var trimmedKey = x.Trim('-');
+                        return !UnlockedKeys.Contains(trimmedKey);
+                    }
+                    else
+                    {
+
+                        return UnlockedKeys.Contains(x);
+                    }
+                });
         }
     }
 }

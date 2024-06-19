@@ -23,19 +23,17 @@ namespace LastLaugh.Utilities
         {
             FilePathMapping.Add(TextureKey.Empty, "");
             FilePathMapping.Add(TextureKey.RaylibLogo, "Assets/raylib_logo_animation");
-            FilePathMapping.Add(TextureKey.Units, "Assets/Art/Units");
+            FilePathMapping.Add(TextureKey.Player, "Assets/Art/Player");
             FilePathMapping.Add(TextureKey.PortraitPlayer, "Assets/Art/Portraits/player1");
             FilePathMapping.Add(TextureKey.PortraitKing, "Assets/Art/Portraits/king1");
             FilePathMapping.Add(TextureKey.PortraitNpc1, "Assets/Art/Portraits/npc1");
             FilePathMapping.Add(TextureKey.PortraitMerchant1, "Assets/Art/Portraits/merchant1");
             FilePathMapping.Add(TextureKey.PortraitGuard1, "Assets/Art/Portraits/guard1");
 
-            FilePathMapping.Add(TextureKey.Tiles, "Assets/LDTK/Art/Overworld");
-            FilePathMapping.Add(TextureKey.Structures, "Assets/LDTK/Art/Structures");
-            FilePathMapping.Add(TextureKey.Walls, "Assets/LDTK/Art/Walls");
-            FilePathMapping.Add(TextureKey.Interior, "Assets/LDTK/Art/Interior");
-            FilePathMapping.Add(TextureKey.Furniture, "Assets/LDTK/Art/Furniture");
-            FilePathMapping.Add(TextureKey.Decorations, "Assets/LDTK/Art/Decorations");
+            FilePathMapping.Add(TextureKey.Fortress, "Assets/LDTK/Art/SI_Fortress");
+            FilePathMapping.Add(TextureKey.Grasslands, "Assets/LDTK/Art/SI_Grasslands_Summer");
+            FilePathMapping.Add(TextureKey.Interior, "Assets/LDTK/Art/SI_Interior");
+            FilePathMapping.Add(TextureKey.Village, "Assets/LDTK/Art/SI_Village");
         }
 
         private void LoadTextures()
@@ -54,7 +52,7 @@ namespace LastLaugh.Utilities
                 Layout = NPatchLayout.NinePatch
             };
 
-            //            NPatchInfos.Add(TextureKey.BlueBox, mostPatchInfos);
+            // NPatchInfos.Add(TextureKey.BlueBox, mostPatchInfos);
 
         }
 
@@ -83,17 +81,15 @@ namespace LastLaugh.Utilities
     {
         Empty,
         RaylibLogo,
-        Units,
-        Tiles,
-        Structures,
-        Interior,
-        Walls,
         PortraitPlayer,
         PortraitNpc1,
         PortraitKing,
         PortraitMerchant1,
         PortraitGuard1,
-        Furniture,
-        Decorations,
+        Fortress,
+        Grasslands,
+        Interior,
+        Village,
+        Player,
     }
 }

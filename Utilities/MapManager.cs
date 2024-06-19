@@ -20,7 +20,7 @@ namespace LastLaugh.Utilities
 
         public void LoadMap(string key, World world, Guid spawnEntity = default)
         {
-            var mapName = "MainMap";
+            var mapName = "LastLaugh";
             var mapData = new LdtkData();
             var mapFile = File.ReadAllText($"Assets/LDTK/{mapName}.ldtk");
             var data = LdtkData.FromJson(mapFile);
@@ -161,7 +161,7 @@ namespace LastLaugh.Utilities
                     if (entity.Identifier == "NPC")
                     {
                         var position = entity.Px.ToVector2();
-                        var sprite = new Sprite(TextureKey.Units) { Position = position };
+                        var sprite = new Sprite(TextureKey.Player) { Position = position };
                         sprite.OriginPos = Render.OriginAlignment.LeftTop;
 
                         var nameRaw = entity.FieldInstances.First(x => x.Identifier == "Name");
