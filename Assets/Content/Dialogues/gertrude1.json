@@ -1,0 +1,137 @@
+[
+  {
+    "Key": "gertrude-1",
+    "lines": [
+      { "Speaker": "Jane to Gertrude and her Children 1 - Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
+      {
+        "Speaker": "Jane",
+        "Text": " Hi Gertrude, how’s it going"
+      },
+      {
+        "Speaker": "Gertrude",
+        "Text": " Not good! I don’t have time to chat. "
+      },
+      {
+        "Speaker": "Gertrude",
+        "Text": " I wanted to make my famous stew for us tonight, but the ingredients have gone missing! My children love it so much, I don’t know what I will do. "
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " If I help you find the ingredients, will you come to the party and vote for me tonight?"
+      },
+      {
+        "Speaker": "Gertrude",
+        "Text": " Yes, of course, please go and look for them! "
+      }
+    ]
+  },
+  {
+    "Key": "gertrude-2",
+    "lines": [
+      {
+        "Speaker": "Gertrude",
+        "Text": " I don’t have time right now! Please find the ingredients soon"
+      }
+    ]
+  },
+  {
+    "Key": "gertrude-3",
+    "lines": [
+      {
+        "Speaker": "Jane",
+        "Text": " Hi Gertrude, look what I’ve got!"
+      },
+      { "Speaker": "*gives Gertrude the ingredients*" },
+      {
+        "Speaker": "Gertrude",
+        "Text": " Oh my! Thank you so much! We will see you later! And don’t worry, I’ll vote for you, no matter how funny Sneako is. "
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " You’re welcome, thank you."
+      }
+    ]
+  },
+  {
+    "Key": "children-1",
+    "lines": [
+      { "Speaker": "Jane to Children 1" },
+      {
+        "Speaker": "Children",
+        "Text": "We have NO idea where the ingredients could be!"
+      },
+      {
+        "Speaker": "Children",
+        "Text": " We’re so worried, pleaseeeeee find them soon"
+      }
+    ]
+  },
+  {
+    "Key": "children-2",
+    "lines": [
+      {
+        "Speaker": "Children",
+        "Text": " Thank you so much for helping! We are sooooo pleased we can eat the stew again, 4 times this week. Woo…. hoo. "
+      },
+      {
+        "Speaker": "-1 children"
+      }
+    ]
+  },
+  {
+    "Key": "",
+    "lines": [
+      { "Speaker": "Jane to Children 3 (if you re enter the building)" },
+      {
+        "Speaker": "Children",
+        "Text": " You fool! We hid the ingredients, we didn’t want stew 4 times in a row! Or any more times! "
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " First of all, thank you. Secondly, how was I meant to know? You seemed excited to eat it."
+      },
+      {
+        "Speaker": "Children",
+        "Text": " You are such a fopdoodle! "
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " Let me fop-a-doodle- DO a juggling routine to win you back over"
+      },
+      { "Speaker": "*Jane does her terrible air juggling routine*" },
+      {
+        "Speaker": "Children",
+        "Text": " …."
+      },
+      {
+        "Speaker": "Children",
+        "Text": " …."
+      },
+      {
+        "Speaker": "Children",
+        "Text": " …."
+      },
+      {
+        "Speaker": "Children",
+        "Text": " …."
+      },
+      {
+        "Speaker": "Children",
+        "Text": " HAHAHAHAHA"
+      },
+      {
+        "Speaker": "Children",
+        "Text": " Wow, that was SO bad, HAHAHAHAHA"
+      },
+      { "Speaker": "* Children sentiment changed to +1*" },
+      {
+        "Speaker": "Children",
+        "Text": " Embarrass yourself like that again tonight and we will definitely vote for you."
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " Glad it was as funny as when I did it for Cecily"
+      }
+    ]
+  }
+]

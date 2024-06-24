@@ -1,0 +1,40 @@
+[
+  {
+    "Key": "charles-1",
+    "lines": [
+      {
+        "Speaker": "Prince Charles",
+        "Text": " Hi Jane, looking funny as always"
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " uh, thanks…"
+      },
+      {
+        "Speaker": "Prince Charles",
+        "Text": " Looking forward to tonight, can’t wait to hear your routine!"
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " Yeah, it’s going to be great, really funny stuff coming. Cecily couldn’t contain herself earlier."
+      },
+      {
+        "Speaker": "Prince Charles",
+        "Text": " Oh Cecily is coming? How come?"
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " I invited her! William wanted me to. Aren’t you and William friends"
+      },
+      { "Speaker": "*Prince Charles player sentiment changes to -1*" },
+      {
+        "Speaker": "Prince Charles",
+        "Text": " Ah yes, I am… Look forward to watching William make a fool of himself all night. Maybe he should take part in the comedy rather than you! "
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " Leave it to the professionals, see you later. "
+      }
+    ]
+  }
+]

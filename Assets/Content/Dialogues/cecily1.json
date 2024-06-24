@@ -1,0 +1,44 @@
+[
+  {
+    "Key": "cecily-1",
+    "Lines": [
+      {
+        "Speaker": "Jane",
+        "Text": " Hi Cecily"
+      },
+      {
+        "Speaker": "Cecily",
+        "Text": " What you doing here?"
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " Just here to entertain, do you have a preference? "
+      },
+      {
+        "Speaker": "Cecily",
+        "Text": " Can you juggle like Sneako?"
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " No, but I can juggle like Jane, with air! "
+      },
+      {
+        "Speaker": "Jane",
+        "Text": " *does a bad fake juggle routine* "
+      },
+      {
+        "Speaker": "Cecily",
+        "Text": " hahaha that was so bad it was funny. Way better than Sneako! "
+      },
+      { "Speaker": "*Cecily player sentiment changes to +1* " },
+      {
+        "Speaker": "Jane",
+        "Text": " Come to the party tonight, I’m gonna do an even better performance later"
+      },
+      {
+        "Speaker": "Cecily",
+        "Text": " Awesome, I will! "
+      }
+    ]
+  }
+]

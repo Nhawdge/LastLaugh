@@ -1,0 +1,131 @@
+[
+  {
+    "Key": "william-0",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": " Hi William, how’s it going?"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Check vote",
+        "NextDialogueId": "william-1",
+        "RequiredKeys": [ "" ],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "Cecily is invited",
+        "NextDialogueId": "william-2",
+        "RequiredKeys": [ "cecily-invited", "-william-invited" ],
+        "CreatedKeys": [ "william-invited" ]
+      },
+      {
+        "Text": "Chat",
+        "NextDialogueId": "william-3",
+        "RequiredKeys": [ "william-invited" ],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "william-1",
+    "Lines": [
+      {
+        "Speaker": "William",
+        "Text": " Hi Jane Foole, why are you here?"
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": " Just checking in on my favourite residents… You know, all the ones that think I’m the best jester"
+      },
+      {
+        "Speaker": "William",
+        "Text": " haha, wow, you actually made me laugh"
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": " ouch"
+      },
+      {
+        "Speaker": "William",
+        "Text": " Sorry, but Sneako is funnier. "
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": " ok, well there goes your invite to the King’s party. "
+      },
+      {
+        "Speaker": "William",
+        "Text": " You can’t take it away, Prince Charles owes me a favour. "
+      },
+      {
+        "Speaker": "William",
+        "Text": " Tell you what, if you can get Cecily an invite to the party, I will vote for you tonight."
+      },
+      {
+        "Speaker": "Jane Foole",
+        "Text": " That seems fair. I’ll talk to her."
+      },
+      {
+        "Speaker": "William",
+        "Text": " Great, thank you!"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "",
+        "NextDialogueId": "",
+        "RequiredKeys": [],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "william-2",
+    "lines": [
+      {
+        "Speaker": "Cecily",
+        "Text": " Hi William, Cecily is coming to the party tonight"
+      },
+      {
+        "Speaker": "William",
+        "Text": " Great, thanks for the good work, finally! "
+      },
+      { "Speaker": "*William player sentiment changes to +1*" }
+    ],
+    "Options": [
+      {
+        "Text": "",
+        "NextDialogueId": "",
+        "RequiredKeys": [ "" ],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "",
+        "NextDialogueId": "",
+        "RequiredKeys": [],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "william-3",
+    "lines": [
+      {
+        "Speaker": "William",
+        "Text": " I can’t wait to dance with Cecily!"
+      },
+      {
+        "Speaker": "William",
+        "Text": " If she will want to…"
+      }
+    ],
+  }
+]
