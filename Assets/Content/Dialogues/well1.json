@@ -20,9 +20,8 @@
         "Text": "Leave",
         "NextDialogueId": "exit",
         "RequiredKeys": [],
-        "CreatedKeys": [ "" ]
+        "CreatedKeys": [ "awful-person" ]
       }
     ]
   }
-]
-    
+]   

@@ -8,7 +8,7 @@ namespace LastLaugh.Utilities.Entities
     {
         public static void BuildPlayer(World world, Vector2 pos)
         {
-            var sprite = new Sprite(TextureKey.Player, 2f);
+            var sprite = new Sprite(TextureKey.Player, 1f);
             sprite.Position = pos;
             sprite.BodyType = BodyTypes.Dynamic;
             sprite.Play("player");

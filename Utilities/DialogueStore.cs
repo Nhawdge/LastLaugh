@@ -11,6 +11,10 @@ namespace LastLaugh.Utilities
 
         private DialogueStore()
         {
+            LoadDialogue();
+        }
+        private void LoadDialogue()
+        {
             Dialogues = new();
             var allFiles = Directory.GetFiles("Assets/Content/Dialogues", "*.json");
             foreach (var file in allFiles)
@@ -27,11 +31,14 @@ namespace LastLaugh.Utilities
             PortraitKeyMap.Add("jane foole", TextureKey.PortraitPlayer);
             PortraitKeyMap.Add("king otto", TextureKey.PortraitKing);
             PortraitKeyMap.Add("random guard", TextureKey.PortraitGuard1);
+            PortraitKeyMap.Add("cecily", TextureKey.PortraitCecily);
+            PortraitKeyMap.Add("gertrude", TextureKey.PortraitGertrude);
+            PortraitKeyMap.Add("children", TextureKey.PortraitChildren);
         }
 
         internal static TextureKey GetPortrait(string key)
         {
-            if (Instance.PortraitKeyMap.TryGetValue(key.ToLower(), out var texture))
+            if (key is not null && Instance.PortraitKeyMap.TryGetValue(key.ToLower(), out var texture))
             {
                 return texture;
             }

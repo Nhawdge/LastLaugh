@@ -7,7 +7,8 @@ namespace LastLaugh.Scenes.Components
     internal class Render
     {
         public Texture2D Texture;
-        public bool IsFlipped = false;
+        public bool IsFlippedH = false;
+        public bool IsFlippedV = false;
         public OriginAlignment OriginPos = OriginAlignment.LeftTop;
         public int Column = 0;
         public int Row = 0;
@@ -78,10 +79,10 @@ namespace LastLaugh.Scenes.Components
                     return new Rectangle(
                         Column * SpriteWidth + 2 * Column + 1,
                         Row * SpriteHeight + 2 * Row + 1,
-                        SpriteWidth * (IsFlipped ? -1 : 1),
-                        SpriteHeight
+                        SpriteWidth * (IsFlippedH ? -1 : 1),
+                        SpriteHeight * (IsFlippedV ? -1 : 1)
                         );
-                return new Rectangle(SourceX, SourceY, SpriteWidth * (IsFlipped ? -1 : 1), SpriteHeight);
+                return new Rectangle(SourceX, SourceY, SpriteWidth * (IsFlippedH ? -1 : 1), SpriteHeight * (IsFlippedV ? -1 : 1));
             }
         }
 

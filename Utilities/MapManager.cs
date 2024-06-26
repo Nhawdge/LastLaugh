@@ -11,7 +11,6 @@ namespace LastLaugh.Utilities
 {
     internal class MapManager
     {
-
         internal static MapManager Instance = new MapManager();
 
         internal Dictionary<Guid, string> LevelIdMap = new();
@@ -43,10 +42,12 @@ namespace LastLaugh.Utilities
 
             foreach (var layer in level.LayerInstances)
             {
+                var mapAsTexture = Raylib.LoadRenderTexture((int)level.PxWid, (int)level.PxHei);
+                Raylib.BeginTextureMode(mapAsTexture);
                 Console.WriteLine($"Layer: {layer.Identifier}");
+                var layerTag = LayersMap[layer.Identifier];
                 if (layer.GridTiles.Any())
                 {
-                    var layerTag = LayersMap[layer.Identifier];
                     var textureKey = TextureManager.Instance.FilePathMapping.First(x => x.Value.Contains(layer.TilesetRelPath.Replace(".png", ""))).Key;
                     foreach (var tile in layer.GridTiles)
                     {
@@ -55,49 +56,35 @@ namespace LastLaugh.Utilities
                         sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
                         sprite.Position = tile.Px.ToVector2();
 
-                        switch (layerTag)
-                        {
-                            case "Under":
-                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new UnderLayer());
-                                break;
-                            case "Ground":
-                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
-                                break;
-                            case "Structure":
-                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
-                                break;
-                            case "Sky":
-                                world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new SkyLayer());
-                                break;
-                            default:
-                                throw new NotImplementedException();
-                        }
+                        sprite.Draw();
+                    }
+
+                    Raylib.EndTextureMode();
+
+                    var mapSprite = new Render(mapAsTexture.Texture);
+                    mapSprite.IsFlippedV = true;
+
+                    mapSprite.OriginPos = Render.OriginAlignment.LeftTop;
+
+                    switch (layerTag)
+                    {
+                        case "Under":
+                            world.Create(mapSprite, new UnderLayer());
+                            break;
+                        case "Ground":
+                            world.Create(mapSprite, new GroundLayer());
+                            break;
+                        case "Structure":
+                            world.Create(mapSprite, new StructureLayer());
+                            break;
+                        case "Sky":
+                            world.Create(mapSprite, new SkyLayer());
+                            break;
+                        default:
+                            throw new NotImplementedException();
                     }
                 }
 
-                //if (layer.Identifier == "Walls")
-                //{
-                //    foreach (var tile in layer.GridTiles)
-                //    {
-                //        var sprite = new Render(TextureKey.Walls);
-                //        sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                //        sprite.SetSource(new Rectangle((int)tile.Src[0], (int)tile.Src[1], (int)layer.GridSize, (int)layer.GridSize));
-                //        sprite.Position = tile.Px.ToVector2();
-                //        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new StructureLayer());
-                //    }
-                //}
-                //if (layer.Identifier == "AutoTiles")
-                //{
-                //    foreach (var tile in layer.AutoLayerTiles)
-                //    {
-                //        var sprite = new Render(TextureKey.ScifiTiles);
-                //        sprite.OriginPos = Render.OriginAlignment.LeftTop;
-                //        var sourcePos = tile.Src.ToVector2();
-                //        sprite.SetSource(new Rectangle((int)sourcePos.X, (int)sourcePos.Y, (int)layer.GridSize, (int)layer.GridSize));
-                //        sprite.Position = tile.Px.ToVector2();
-                //        world.Create(new MapTile(tile.Px.ToVector2() / layer.GridSize, layer.GridSize), sprite, new GroundLayer());
-                //    }
-                //}
                 if (layer.Identifier == "Collisions")
                 {
                     Singleton.Instance.CollisionGrid = new Dictionary<Rectangle, CollisionType>();
@@ -139,7 +126,7 @@ namespace LastLaugh.Utilities
                         playerLoadAt = entity.Px.ToVector2();
                         PlayerUtilities.BuildPlayer(world, playerLoadAt);
                         Console.WriteLine($"Found Player Spawn at {playerLoadAt}");
-                    }   
+                    }
                     if (entity.Identifier == "Doorway")
                     {
                         var doorAt = entity.Px.ToVector2();
@@ -157,17 +144,16 @@ namespace LastLaugh.Utilities
 
                         world.Create(door, doorSprite, new StructureLayer());
                     }
-
-                    if (entity.Identifier == "NPC")
+                      
+                    if (entity.Identifier == "NPC")  
                     {
                         var position = entity.Px.ToVector2();
-                        var sprite = new Sprite(TextureKey.Player) { Position = position };
-                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
-
                         var nameRaw = entity.FieldInstances.First(x => x.Identifier == "Name");
-                        var name = nameRaw.Value.String;
+                        var titleCase = nameRaw.Value.String.Substring(0, 1).ToUpper() + nameRaw.Value.String.Substring(1).ToLower();
+                        var textureKey = Enum.Parse<TextureKey>(titleCase);
 
-                        sprite.Play(name);
+                        var sprite = new Sprite(textureKey) { Position = position };
+                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
 
                         var dialogueKeyRaw = entity.FieldInstances.First(x => x.Identifier == "DialogueKey");
                         var dialogueKey = dialogueKeyRaw.Value.String;

@@ -24,11 +24,21 @@ namespace LastLaugh.Utilities
             FilePathMapping.Add(TextureKey.Empty, "");
             FilePathMapping.Add(TextureKey.RaylibLogo, "Assets/raylib_logo_animation");
             FilePathMapping.Add(TextureKey.Player, "Assets/Art/Player");
+            FilePathMapping.Add(TextureKey.Cecily, "Assets/Art/cecily");
+            FilePathMapping.Add(TextureKey.Childf, "Assets/Art/childf");
+            FilePathMapping.Add(TextureKey.Gertrude, "Assets/Art/gertrude");
+            FilePathMapping.Add(TextureKey.King, "Assets/Art/king");
+
+
+
             FilePathMapping.Add(TextureKey.PortraitPlayer, "Assets/Art/Portraits/player1");
             FilePathMapping.Add(TextureKey.PortraitKing, "Assets/Art/Portraits/king1");
             FilePathMapping.Add(TextureKey.PortraitNpc1, "Assets/Art/Portraits/npc1");
             FilePathMapping.Add(TextureKey.PortraitMerchant1, "Assets/Art/Portraits/merchant1");
             FilePathMapping.Add(TextureKey.PortraitGuard1, "Assets/Art/Portraits/guard1");
+            FilePathMapping.Add(TextureKey.PortraitCecily, "Assets/Art/Portraits/cecily1");
+            FilePathMapping.Add(TextureKey.PortraitGertrude, "Assets/Art/Portraits/gertrude1");
+            FilePathMapping.Add(TextureKey.PortraitChildren, "Assets/Art/Portraits/children1");
 
             FilePathMapping.Add(TextureKey.Fortress, "Assets/LDTK/Art/SI_Fortress");
             FilePathMapping.Add(TextureKey.Grasslands, "Assets/LDTK/Art/SI_Grasslands_Summer");
@@ -91,5 +101,12 @@ namespace LastLaugh.Utilities
         Interior,
         Village,
         Player,
+        Cecily,
+        Childf,
+        Gertrude,
+        King,
+        PortraitCecily,
+        PortraitGertrude,
+        PortraitChildren,
     }
 }

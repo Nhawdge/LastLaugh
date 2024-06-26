@@ -57,8 +57,8 @@ namespace LastLaugh.Scenes.Components
                 return new Rectangle(
                        frame.X,
                        frame.Y,
-                       frame.W * (IsFlipped ? -1 : 1),
-                       frame.H
+                       frame.W * (IsFlippedH ? -1 : 1),
+                       frame.H * (IsFlippedV ? -1 : 1)
                        );
             }
         }

@@ -1,93 +1,194 @@
 [
   {
+    "Key": "gertrude-0",
+    "Lines": [
+      { "Text": "Jane to Gertrude and her Children 1 \n- Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
+      {
+        "Text": "As you approach Gertrude looks desperate and busy."
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Chat",
+        "NextDialogueId": "gertrude-1",
+        "RequiredKeys": [ "-ingredient-hunt" ],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "Chat",
+        "NextDialogueId": "gertrude-busy",
+        "RequiredKeys": [ "ingredient-hunt" ],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "[Deliver ingredients]",
+        "NextDialogueId": "gertrude-delivery",
+        "RequiredKeys": [ "ingredient-1", "ingredient-2", "ingredient-3" ],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      }
+    ]
+  },
+  {
     "Key": "gertrude-1",
-    "lines": [
-      { "Speaker": "Jane to Gertrude and her Children 1 - Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
+    "Lines": [
+      { "Text": "Jane to Gertrude and her Children 1 - Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
       {
-        "Speaker": "Jane",
-        "Text": " Hi Gertrude, how’s it going"
+        "Speaker": "Jane Foole",
+        "Text": " Hi Gertrude, how's it going"
       },
       {
         "Speaker": "Gertrude",
-        "Text": " Not good! I don’t have time to chat. "
+        "Text": " Not good! I don't have time to chat. "
       },
       {
         "Speaker": "Gertrude",
-        "Text": " I wanted to make my famous stew for us tonight, but the ingredients have gone missing! My children love it so much, I don’t know what I will do. "
+        "Text": " I wanted to make my famous stew for us tonight, but the ingredients have gone missing!\nMy children love it so much, I don't know what I will do. "
       },
       {
-        "Speaker": "Jane",
+        "Speaker": "Jane Foole",
         "Text": " If I help you find the ingredients, will you come to the party and vote for me tonight?"
       },
       {
         "Speaker": "Gertrude",
         "Text": " Yes, of course, please go and look for them! "
       }
-    ]
-  },
-  {
-    "Key": "gertrude-2",
-    "lines": [
+    ],
+    "Options": [
       {
-        "Speaker": "Gertrude",
-        "Text": " I don’t have time right now! Please find the ingredients soon"
+        "Text": "I'm off!",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "ingredient-hunt" ]
       }
     ]
   },
   {
-    "Key": "gertrude-3",
-    "lines": [
-      {
-        "Speaker": "Jane",
-        "Text": " Hi Gertrude, look what I’ve got!"
-      },
-      { "Speaker": "*gives Gertrude the ingredients*" },
+    "Key": "gertrude-busy",
+    "Lines": [
       {
         "Speaker": "Gertrude",
-        "Text": " Oh my! Thank you so much! We will see you later! And don’t worry, I’ll vote for you, no matter how funny Sneako is. "
+        "Text": " I don't have time right now! Please find the ingredients soon"
+      }
+    ]
+  },
+  {
+    "Key": "gertrude-delivery",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": " Hi Gertrude, look what I've got!"
+      },
+      { "Text": "*gives Gertrude the ingredients*" },
+      {
+        "Speaker": "Gertrude",
+        "Text": " Oh my! Thank you so much! We will see you later! And don't worry, I'll vote for you, no matter how funny Sneako is. "
       },
       {
-        "Speaker": "Jane",
-        "Text": " You’re welcome, thank you."
+        "Speaker": "Jane Foole",
+        "Text": " You're welcome, thank you."
+      }
+    ],
+    "Options": [
+      {
+        "Text": "I'm off!",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "gertrude-invited" ]
+      }
+    ]
+  },
+
+  {
+    "Key": "children-0",
+    "Lines": [
+      {
+        "Speaker": "",
+        "Text": "The children look concerned, but you're not sure what for."
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Chat!",
+        "NextDialogueId": "children-1",
+        "RequiredKeys": ["-gertrude-invited","-children-invited"],
+        "CreatedKeys": []
+      },
+      {
+        "Text": "Chat?",
+        "NextDialogueId": "children-stew",
+        "RequiredKeys": [ "gertrude-invited", "-children-invited" ],
+        "CreatedKeys": []
+      },
+      {
+        "Text": "Chat!!",
+        "NextDialogueId": "children-invited",
+        "RequiredKeys": [ "gertrude-invited", "children-invited" ],
+        "CreatedKeys": []
+      },
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
       }
     ]
   },
   {
     "Key": "children-1",
-    "lines": [
-      { "Speaker": "Jane to Children 1" },
+    "Lines": [
       {
         "Speaker": "Children",
         "Text": "We have NO idea where the ingredients could be!"
       },
       {
         "Speaker": "Children",
-        "Text": " We’re so worried, pleaseeeeee find them soon"
+        "Text": " We're so worried, pleaseeeeee find them soon"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "I'll keep looking!",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
       }
     ]
   },
   {
-    "Key": "children-2",
-    "lines": [
+    "Key": "children-stew",
+    "Lines": [
       {
         "Speaker": "Children",
-        "Text": " Thank you so much for helping! We are sooooo pleased we can eat the stew again, 4 times this week. Woo…. hoo. "
-      },
+        "Text": " Thank you so much for helping! We are sooooo pleased we can eat the stew again, 4 times this week. Woo. hoo. "
+      }
+    ],
+    "Options": [
       {
-        "Speaker": "-1 children"
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
       }
     ]
   },
   {
-    "Key": "",
-    "lines": [
-      { "Speaker": "Jane to Children 3 (if you re enter the building)" },
+    "Key": "children-invited",
+    "Lines": [
       {
-        "Speaker": "Children",
-        "Text": " You fool! We hid the ingredients, we didn’t want stew 4 times in a row! Or any more times! "
+        "Speaker": "Jane to Children 3 (if you re enter the building)"
       },
       {
-        "Speaker": "Jane",
+        "Speaker": "Children",
+        "Text": " You fool! We hid the ingredients, we didn't want stew 4 times in a row! Or any more times! "
+      },
+      {
+        "Speaker": "Jane Foole",
         "Text": " First of all, thank you. Secondly, how was I meant to know? You seemed excited to eat it."
       },
       {
@@ -95,25 +196,25 @@
         "Text": " You are such a fopdoodle! "
       },
       {
-        "Speaker": "Jane",
+        "Speaker": "Jane Foole",
         "Text": " Let me fop-a-doodle- DO a juggling routine to win you back over"
       },
       { "Speaker": "*Jane does her terrible air juggling routine*" },
       {
         "Speaker": "Children",
-        "Text": " …."
+        "Text": " ..."
       },
       {
         "Speaker": "Children",
-        "Text": " …."
+        "Text": " ..."
       },
       {
         "Speaker": "Children",
-        "Text": " …."
+        "Text": " ..."
       },
       {
         "Speaker": "Children",
-        "Text": " …."
+        "Text": " ..."
       },
       {
         "Speaker": "Children",
@@ -129,7 +230,7 @@
         "Text": " Embarrass yourself like that again tonight and we will definitely vote for you."
       },
       {
-        "Speaker": "Jane",
+        "Speaker": "Jane Foole",
         "Text": " Glad it was as funny as when I did it for Cecily"
       }
     ]

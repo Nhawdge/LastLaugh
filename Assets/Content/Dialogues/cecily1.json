@@ -1,9 +1,32 @@
 [
   {
+    "Key": "cecily-0",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Hello"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Chat",
+        "NextDialogueId": "cecily-1",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      }
+    ]
+  },
+  {
     "Key": "cecily-1",
     "Lines": [
       {
-        "Speaker": "Jane",
+        "Speaker": "Jane Foole",
         "Text": " Hi Cecily"
       },
       {
@@ -11,7 +34,7 @@
         "Text": " What you doing here?"
       },
       {
-        "Speaker": "Jane",
+        "Speaker": "Jane Foole",
         "Text": " Just here to entertain, do you have a preference? "
       },
       {
@@ -19,25 +42,33 @@
         "Text": " Can you juggle like Sneako?"
       },
       {
-        "Speaker": "Jane",
-        "Text": " No, but I can juggle like Jane, with air! "
+        "Speaker": "Jane Foole",
+        "Text": " No, but I can juggle like Jane Foole, with air! "
       },
       {
-        "Speaker": "Jane",
+        "Speaker": "Jane Foole",
         "Text": " *does a bad fake juggle routine* "
       },
       {
         "Speaker": "Cecily",
         "Text": " hahaha that was so bad it was funny. Way better than Sneako! "
       },
-      { "Speaker": "*Cecily player sentiment changes to +1* " },
+      { "Text": "*Cecily reputation +1* " },
       {
-        "Speaker": "Jane",
-        "Text": " Come to the party tonight, I’m gonna do an even better performance later"
+        "Speaker": "Jane Foole",
+        "Text": " Come to the party tonight, I'm gonna do an even better performance later"
       },
       {
         "Speaker": "Cecily",
         "Text": " Awesome, I will! "
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Bye!",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "cecily-invited" ]
       }
     ]
   }

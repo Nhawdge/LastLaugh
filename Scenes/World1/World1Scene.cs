@@ -3,9 +3,9 @@ using LastLaugh.Utilities;
 
 namespace LastLaugh.Scenes.World1
 {
-    internal class World1Scene : BaseScene
+    internal class World1Scene : BaseScene       
     {
-        public World1Scene(string mapId = "Level_2", Guid spawnEntity = default)
+        public World1Scene(string mapId = "Level_0", Guid spawnEntity = default)
         {
             LoadingTasks.Add("Loading World", () =>
             {

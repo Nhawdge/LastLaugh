@@ -39,7 +39,7 @@ namespace LastLaugh
 
             Camera = new Camera2D
             {
-                Zoom = 3f,
+                Zoom = 1.5f,
                 Offset = new System.Numerics.Vector2(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2),
             };
 

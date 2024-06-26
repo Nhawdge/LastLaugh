@@ -3,14 +3,12 @@ using Arch.Core.Extensions;
 using LastLaugh.Extensions;
 using LastLaugh.Scenes.Components;
 using LastLaugh.Scenes.World1.Data;
-using LastLaugh.Utilities;
 using System.Numerics;
 
 namespace LastLaugh.Scenes.World1.Systems
 {
     internal class PlayerControlSystem : GameSystem
     {
-        private float jumpClock = 0;
         internal override void Update(World world)
         {
             var playerEntity = world.QueryFirst<Player>();
