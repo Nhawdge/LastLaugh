@@ -16,7 +16,7 @@ namespace LastLaugh.Scenes.World1.Systems
             var player = world.QueryFirst<Player>();
             var playerSprite = player.Get<Sprite>();
             var chatActivatedThisFrame = false;
-            
+
             var text = "Press E to chat";
             var fontSize = 20;
             var textSize = Raylib.MeasureText(text, fontSize);
@@ -82,12 +82,14 @@ namespace LastLaugh.Scenes.World1.Systems
                 {
                     Raylib.DrawText("Press E to select", Raylib.GetScreenWidth() - 300, Raylib.GetScreenHeight() - 50, 20, Color.White);
 
-                    var selection = Singleton.Instance.DialogueSelection;  
-                    foreach (var (option, index) in Singleton.Instance.ActiveDialogue.Options
-                        .Where(x => DialogueStore.Instance.HasRequiredKeys(x.RequiredKeys))
-                        .Select((x, i) => (x, i)))
+                    var selection = Singleton.Instance.DialogueSelection;
+
+                    var validOptions = Singleton.Instance.ActiveDialogue.Options
+                        .Where(x => DialogueStore.Instance.HasRequiredKeys(x.RequiredKeys));
+
+                    foreach (var (option, index) in validOptions.Select((x, i) => (x, i)))
                     {
-                        var color = selection == index ? Color.Red : Color.White;  
+                        var color = selection == index ? Color.Red : Color.White;
                         Raylib.DrawText(option.Text, 200, Raylib.GetScreenHeight() - 150 + index * 20, 20, color);
                     };
                     if (Raylib.IsKeyPressed(KeyboardKey.W))
@@ -101,14 +103,14 @@ namespace LastLaugh.Scenes.World1.Systems
                     else if (Raylib.IsKeyPressed(KeyboardKey.S))
                     {
                         Singleton.Instance.DialogueSelection += 1;
-                        if (Singleton.Instance.DialogueSelection >= Singleton.Instance.ActiveDialogue.Options.Count())
+                        if (Singleton.Instance.DialogueSelection >= validOptions.Count())
                         {
-                            Singleton.Instance.DialogueSelection = Singleton.Instance.ActiveDialogue.Options.Count() - 1;
+                            Singleton.Instance.DialogueSelection = validOptions.Count() - 1;
                         }
                     }
                     else if (Raylib.IsKeyPressed(KeyboardKey.E) && chatActivatedThisFrame == false)
                     {
-                        var currentOption = Singleton.Instance.ActiveDialogue.Options[Singleton.Instance.DialogueSelection];
+                        var currentOption = validOptions.ToList()[Singleton.Instance.DialogueSelection];
                         var key = currentOption.NextDialogueId;
 
                         DialogueStore.Instance.AddUnlockedKey(currentOption.CreatedKeys);

@@ -38,8 +38,6 @@ namespace LastLaugh.Utilities
             Singleton.Instance.CameraConstraints.Height = level.PxHei;
             Console.WriteLine($"Level: {level.Identifier}, Width: {level.PxWid}, Height: {level.PxHei}");
 
-            var mapTileArchetype = new ComponentType[] { typeof(MapTile), typeof(Render) };
-
             foreach (var layer in level.LayerInstances)
             {
                 var mapAsTexture = Raylib.LoadRenderTexture((int)level.PxWid, (int)level.PxHei);
@@ -119,13 +117,11 @@ namespace LastLaugh.Utilities
                     {
                         playerLoadAt = entity.Px.ToVector2();
                         PlayerUtilities.BuildPlayer(world, playerLoadAt);
-                        Console.WriteLine($"Found Player Spawn at {playerLoadAt}");
                     }
                     if (entity.Identifier == "Player_Spawn" && spawnEntity == Guid.Empty)
                     {
                         playerLoadAt = entity.Px.ToVector2();
                         PlayerUtilities.BuildPlayer(world, playerLoadAt);
-                        Console.WriteLine($"Found Player Spawn at {playerLoadAt}");
                     }
                     if (entity.Identifier == "Doorway")
                     {
@@ -144,8 +140,8 @@ namespace LastLaugh.Utilities
 
                         world.Create(door, doorSprite, new StructureLayer());
                     }
-                      
-                    if (entity.Identifier == "NPC")  
+
+                    if (entity.Identifier == "NPC")
                     {
                         var position = entity.Px.ToVector2();
                         var nameRaw = entity.FieldInstances.First(x => x.Identifier == "Name");

@@ -9,6 +9,7 @@ namespace LastLaugh.Scenes.World1.Systems
 {
     internal class PlayerControlSystem : GameSystem
     {
+        private Direction LastDirection = Direction.Down;
         internal override void Update(World world)
         {
             var playerEntity = world.QueryFirst<Player>();
@@ -39,34 +40,46 @@ namespace LastLaugh.Scenes.World1.Systems
                 force.Y = 1;
             }
             if (Raylib.IsKeyDown(KeyboardKey.A))
-            {
-                force.X = -1;
-            }
+            {   
+                force.X = -1;   
+            }   
             if (Raylib.IsKeyDown(KeyboardKey.D))
             {
                 force.X = 1;
-            }
+            }  
             sprite.Force = force * speed;
 
             if (force.X > 0)
-            {
+            {   
                 sprite.Play("walk-r");
+                LastDirection = Direction.Right;
             }
             else if (force.X < 0)
             {
                 sprite.Play("walk-l");
+                LastDirection = Direction.Left;
             }
             else if (force.Y > 0)
-            {
+            {   
                 sprite.Play("walk-d");
+                LastDirection = Direction.Down;
             }
             else if (force.Y < 0)
             {
                 sprite.Play("walk-u");
+                LastDirection = Direction.Up;
             }
             else
             {
-                sprite.Play("idle");
+                var idleName = LastDirection switch
+                {
+                    Direction.Up => "idle-u",
+                    Direction.Down => "idle-d",
+                    Direction.Left => "idle-l",
+                    Direction.Right => "idle-r",
+                    _ => "idle"
+                };
+                sprite.Play(idleName);
             }
 
 
@@ -82,4 +95,12 @@ namespace LastLaugh.Scenes.World1.Systems
 
         }
     }
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
 }

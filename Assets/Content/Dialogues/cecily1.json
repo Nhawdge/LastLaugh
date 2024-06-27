@@ -11,7 +11,7 @@
       {
         "Text": "Chat",
         "NextDialogueId": "cecily-1",
-        "RequiredKeys": [],
+        "RequiredKeys": [ "-cecily-invited" ],
         "CreatedKeys": [ "" ]
       },
       {

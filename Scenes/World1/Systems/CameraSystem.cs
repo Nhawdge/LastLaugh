@@ -3,7 +3,6 @@ using Arch.Core.Extensions;
 using LastLaugh.Extensions;
 using LastLaugh.Scenes.Components;
 using LastLaugh.Scenes.World1.Data;
-using System.Numerics;
 
 namespace LastLaugh.Scenes.World1.Systems
 {
@@ -12,7 +11,7 @@ namespace LastLaugh.Scenes.World1.Systems
         internal override void Update(World world)
         {
             var player = world.QueryFirst<Player>();
-            var sprite = player.Get<Sprite>();
+            var sprite = player.Get<Sprite>();  
 
             var camera = LastLaughEngine.Instance.Camera;
 
@@ -20,13 +19,10 @@ namespace LastLaugh.Scenes.World1.Systems
 
             var leftEdge = Raylib.GetRenderWidth() / 2 / camera.Zoom;
             var topEdge = Raylib.GetRenderHeight() / 2 / camera.Zoom;
-            var topLeft = new Vector2(leftEdge, topEdge);
-
+            
             var rightEdge = Singleton.Instance.CameraConstraints.Width - Raylib.GetScreenWidth() / 2 / camera.Zoom;
             var bottomEdge = Singleton.Instance.CameraConstraints.Height - Raylib.GetScreenHeight() / 2 / camera.Zoom;
-            var bottomRight = new Vector2(rightEdge, bottomEdge);
-            var adjustedTopLeft = topLeft;
-
+            
             var target = sprite.Position;
 
             target.X = Math.Max(target.X, leftEdge);
@@ -50,6 +46,7 @@ namespace LastLaugh.Scenes.World1.Systems
             {
                 Console.WriteLine($"Camera: {camera.Target}, Mouse: {mousePos}");
             }
+
         }
     }
 }

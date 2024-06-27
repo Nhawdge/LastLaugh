@@ -50,10 +50,10 @@ namespace LastLaugh
                 GameLoop();
             }
         }
-
+          
         public void GameLoop()
         {
-            Raylib.BeginDrawing();
+            Raylib.BeginDrawing();   
             Raylib.BeginMode2D(Camera);
 
             Raylib.ClearBackground(Color.RayWhite);

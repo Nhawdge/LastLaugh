@@ -1,6 +1,5 @@
 ﻿using Arch.Core;
 using Arch.Core.Extensions;
-using LastLaugh;
 using LastLaugh.Extensions;
 using LastLaugh.Scenes.Components;
 
@@ -10,7 +9,6 @@ namespace LastLaugh.Scenes.World1.Systems
     {
         internal override void Update(World world)
         {
-
             var query1 = new QueryDescription().WithAll<UnderLayer>();
             world.Query(in query1, (entity) =>
             {

@@ -2,7 +2,7 @@
   {
     "Key": "gertrude-0",
     "Lines": [
-      { "Text": "Jane to Gertrude and her Children 1 \n- Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
+      { "Speaker": "Jane to Gertrude and her Children 1 \n- Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
       {
         "Text": "As you approach Gertrude looks desperate and busy."
       }
@@ -15,7 +15,7 @@
         "CreatedKeys": [ "" ]
       },
       {
-        "Text": "Chat",
+        "Text": "Chat?",
         "NextDialogueId": "gertrude-busy",
         "RequiredKeys": [ "ingredient-hunt" ],
         "CreatedKeys": [ "" ]
@@ -74,6 +74,14 @@
       {
         "Speaker": "Gertrude",
         "Text": " I don't have time right now! Please find the ingredients soon"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Okay Bye!",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
       }
     ]
   },
