@@ -21,15 +21,14 @@ namespace LastLaugh.Utilities
 
         private void MapKeys()
         {
-            FilePathMapping.Add(TextureKey.Empty, "");
+            FilePathMapping.Add(TextureKey.Empty, "Assets/Art/empty");
             FilePathMapping.Add(TextureKey.RaylibLogo, "Assets/raylib_logo_animation");
             FilePathMapping.Add(TextureKey.Player, "Assets/Art/Player");
             FilePathMapping.Add(TextureKey.Cecily, "Assets/Art/cecily");
             FilePathMapping.Add(TextureKey.Childf, "Assets/Art/childf");
             FilePathMapping.Add(TextureKey.Gertrude, "Assets/Art/gertrude");
             FilePathMapping.Add(TextureKey.King, "Assets/Art/king");
-
-
+            FilePathMapping.Add(TextureKey.Guard1, "Assets/Art/guard1");
 
             FilePathMapping.Add(TextureKey.PortraitPlayer, "Assets/Art/Portraits/player1");
             FilePathMapping.Add(TextureKey.PortraitKing, "Assets/Art/Portraits/king1");
@@ -108,5 +107,6 @@ namespace LastLaugh.Utilities
         PortraitCecily,
         PortraitGertrude,
         PortraitChildren,
+        Guard1,
     }
 }

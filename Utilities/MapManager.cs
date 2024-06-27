@@ -137,6 +137,7 @@ namespace LastLaugh.Utilities
                         var doorSprite = new Render(TextureKey.Empty) { Position = doorAt };
                         //doorSprite.SetSource(new Rectangle(8 * 5, 8 * 31, 8, 8));
                         doorSprite.OriginPos = Render.OriginAlignment.LeftTop;
+                        doorSprite.Color = Color.White;
 
                         world.Create(door, doorSprite, new StructureLayer());
                     }
@@ -145,15 +146,23 @@ namespace LastLaugh.Utilities
                     {
                         var position = entity.Px.ToVector2();
                         var nameRaw = entity.FieldInstances.First(x => x.Identifier == "Name");
-                        var titleCase = nameRaw.Value.String.Substring(0, 1).ToUpper() + nameRaw.Value.String.Substring(1).ToLower();
-                        var textureKey = Enum.Parse<TextureKey>(titleCase);
-
-                        var sprite = new Sprite(textureKey) { Position = position };
-                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
 
                         var dialogueKeyRaw = entity.FieldInstances.First(x => x.Identifier == "DialogueKey");
                         var dialogueKey = dialogueKeyRaw.Value.String;
 
+                        var textureKey = TextureKey.Empty;
+
+                        if (!string.IsNullOrEmpty(nameRaw.Value.String))
+                        {
+                            var titleCase = nameRaw.Value.String.Substring(0, 1).ToUpper() + nameRaw.Value.String.Substring(1).ToLower();
+                            textureKey = Enum.Parse<TextureKey>(titleCase);
+                        }
+
+                        var sprite = new Sprite(textureKey) { Position = position };
+                        sprite.Color = Color.White;
+                        sprite.OriginPos = Render.OriginAlignment.LeftTop;
+
+                        world.Create(sprite, new UnitLayer(), new Npc() { DialogueKey = dialogueKey });
                         world.Create(sprite, new UnitLayer(), new Npc() { DialogueKey = dialogueKey });
                     }
                 }

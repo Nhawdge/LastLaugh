@@ -1,5 +1,28 @@
 [
   {
+    "Key": "king-0",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Hello"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Chat",
+        "NextDialogueId": "king-1",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      },
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      }
+    ]
+  },
+  {
     "Key": "king-1",
     "Lines": [
       {
@@ -72,7 +95,7 @@
       },
       {
         "Speaker": "King Otto",
-        "Text": "Stop wasting valuable time here! You need to go and invite the town! There's only 5 hours until it starts! "
+        "Text": "Stop wasting valuable time here! You need to go and invite the town! \nThere's only 5 hours until it starts! "
       }
     ],
     "Options": [

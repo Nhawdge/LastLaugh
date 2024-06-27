@@ -12,12 +12,10 @@ namespace LastLaugh.Scenes.World1.Systems
         {
             var query = new QueryDescription().WithAll<Doorway>();
 
-            world.Query(in query, (entity) =>
+            world.Query(in query, (entity) =>  
             {
-                
                 var doorway = entity.Get<Doorway>();
                 var doorSprite = entity.Get<Render>();
-                Raylib.DrawRectangleRec(doorSprite.CollisionDestination, Color.Red);
             });
         }
 
@@ -35,19 +33,16 @@ namespace LastLaugh.Scenes.World1.Systems
             {
                 var doorway = entity.Get<Doorway>();
                 var doorSprite = entity.Get<Render>();
-                //Console.WriteLine($"distance to player {doorSprite.Position.DistanceTo(playerSprite.Position)}");
-                Raylib.DrawRectangleLinesEx(doorSprite.CollisionDestination, 2, Color.Brown);
                 if (Raylib.CheckCollisionRecs(playerSprite.CollisionDestination, doorSprite.CollisionDestination))
                 {
-                    var text = "Press E to teleport";
+                    var text = "Press E to interact";
                     var textSize = Raylib.MeasureText(text, 20);
 
                     var center = new Vector2(Raylib.GetScreenWidth() / 2 - textSize / 2, Raylib.GetScreenHeight() / 4 * 3);
 
-                    Raylib.DrawText("Press E to teleport", (int)center.X, (int)center.Y, 20, Raylib.Fade(Color.White, 0.75f));
+                    Raylib.DrawText(text, (int)center.X, (int)center.Y, 20, Raylib.Fade(Color.White, 0.75f));
                     if (Raylib.IsKeyPressed(KeyboardKey.E))
                     {
-                        Console.WriteLine("Teleporting");
                         shouldTeleport = true;
                         teleTask = () => LastLaughEngine.Instance.ActiveScene = new World1Scene(doorway.LevelId, doorway.TargetEntityId);
                     }

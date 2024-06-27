@@ -24,7 +24,7 @@ namespace LastLaugh
             var width = Raylib.GetMonitorWidth(monitor);
             var height = Raylib.GetMonitorHeight(monitor);
 
-            //Raylib.SetWindowSize(width, height);
+            //Raylib.SetWindowSize(width, height); 
 
             Raylib.SetTargetFPS(60);
             Raylib.InitAudioDevice();
@@ -39,7 +39,7 @@ namespace LastLaugh
 
             Camera = new Camera2D
             {
-                Zoom = 1.5f,
+                Zoom = 2f,
                 Offset = new System.Numerics.Vector2(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2),
             };
 
@@ -50,10 +50,10 @@ namespace LastLaugh
                 GameLoop();
             }
         }
-          
+
         public void GameLoop()
         {
-            Raylib.BeginDrawing();   
+            Raylib.BeginDrawing();
             Raylib.BeginMode2D(Camera);
 
             Raylib.ClearBackground(Color.RayWhite);

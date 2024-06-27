@@ -1,6 +1,6 @@
 [
   {
-    "Key": "well-1",
+    "Key": "well-0",
     "Lines": [
       {
         "Speaker": "Jane Foole",
@@ -15,12 +15,29 @@
         "Text": ""
       }
     ],
-    "Options": [
+    "Options": [ 
       {
         "Text": "Leave",
         "NextDialogueId": "exit",
         "RequiredKeys": [],
         "CreatedKeys": [ "awful-person" ]
+      }
+    ]
+  },
+  {
+    "Key": "lockeddoor-0",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Oh, it's locked"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
       }
     ]
   }

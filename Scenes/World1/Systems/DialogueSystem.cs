@@ -17,7 +17,7 @@ namespace LastLaugh.Scenes.World1.Systems
             var playerSprite = player.Get<Sprite>();
             var chatActivatedThisFrame = false;
 
-            var text = "Press E to chat";
+            var text = "Press E to interact";
             var fontSize = 20;
             var textSize = Raylib.MeasureText(text, fontSize);
 
