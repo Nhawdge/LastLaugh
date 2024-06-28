@@ -37,7 +37,7 @@
   {
     "Key": "gertrude-1",
     "Lines": [
-      { "Text": "Jane to Gertrude and her Children 1 - Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
+      { "Speaker": "Jane to Gertrude and her Children 1 - Gertrude sentiment -1, Children sentiment 1 (do they each get a vote?)" },
       {
         "Speaker": "Jane Foole",
         "Text": " Hi Gertrude, how's it going"
@@ -95,7 +95,7 @@
       { "Text": "*gives Gertrude the ingredients*" },
       {
         "Speaker": "Gertrude",
-        "Text": " Oh my! Thank you so much! We will see you later! And don't worry, I'll vote for you, no matter how funny Sneako is. "
+        "Text": " Oh my! Thank you so much! We will see you later!\nAnd don't worry, I'll vote for you, no matter how funny Sneako is. "
       },
       {
         "Speaker": "Jane Foole",
@@ -136,7 +136,7 @@
       {
         "Text": "Chat!!",
         "NextDialogueId": "children-invited",
-        "RequiredKeys": [ "gertrude-invited", "children-invited" ],
+        "RequiredKeys": [ "gertrude-invited", "cecily-invited" ],
         "CreatedKeys": []
       },
       {
@@ -173,7 +173,7 @@
     "Lines": [
       {
         "Speaker": "Children",
-        "Text": " Thank you so much for helping! We are sooooo pleased we can eat the stew again, 4 times this week. Woo. hoo. "
+        "Text": " Thank you so much for helping!\nWe are sooooo pleased we can eat the stew again, 4 times this week. Woo. hoo. "
       }
     ],
     "Options": [
@@ -240,6 +240,14 @@
       {
         "Speaker": "Jane Foole",
         "Text": " Glad it was as funny as when I did it for Cecily"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
       }
     ]
   }

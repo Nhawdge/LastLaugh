@@ -36,6 +36,18 @@ namespace LastLaugh.Scenes.MainMenu
                 //Background = TextureKey.BlueBox,
             });
 
+#if DEBUG
+            World.Create(new UiButton
+            {
+                Order = 3,
+                Action = () =>
+                {
+                    LastLaughEngine.Instance.ActiveScene = new Ending.EndScene();
+                },
+                Text = "End Game (Debug)",
+                //Background = TextureKey.BlueBox,
+            });
+#endif
             //var logoRender = new Render(TextureKey.MainLogo);
             //logoRender.OriginPos = Render.OriginAlignment.Center;
             //logoRender.Position = new Vector2(10, 30);

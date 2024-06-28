@@ -9,7 +9,7 @@
     ],
     "Options": [
       {
-        "Text": "Check vote",
+        "Text": "Chat",
         "NextDialogueId": "william-1",
         "RequiredKeys": [ "" ],
         "CreatedKeys": [ "" ]
@@ -43,15 +43,15 @@
       },
       {
         "Speaker": "Jane Foole",
-        "Text": " Just checking in on my favourite residents� You know, all the ones that think I�m the best jester"
+        "Text": " Just checking in on my favourite residents, You know, all the ones that think I'm the best jester"
       },
       {
         "Speaker": "William",
-        "Text": " haha, wow, you actually made me laugh"
+        "Text": " Haha, wow, you actually made me laugh"
       },
       {
         "Speaker": "Jane Foole",
-        "Text": " ouch"
+        "Text": " Ouch"
       },
       {
         "Speaker": "William",
@@ -59,11 +59,11 @@
       },
       {
         "Speaker": "Jane Foole",
-        "Text": " ok, well there goes your invite to the King�s party. "
+        "Text": " ok, well there goes your invite to the King's party. "
       },
       {
         "Speaker": "William",
-        "Text": " You can�t take it away, Prince Charles owes me a favour. "
+        "Text": " You cannot take it away, Prince Charles owes me a favour. "
       },
       {
         "Speaker": "William",
@@ -71,7 +71,7 @@
       },
       {
         "Speaker": "Jane Foole",
-        "Text": " That seems fair. I�ll talk to her."
+        "Text": " That seems fair. I'll talk to her."
       },
       {
         "Speaker": "William",
@@ -80,8 +80,8 @@
     ],
     "Options": [
       {
-        "Text": "",
-        "NextDialogueId": "",
+        "Text": "Bye",
+        "NextDialogueId": "exit",
         "RequiredKeys": [],
         "CreatedKeys": []
       }
@@ -98,20 +98,14 @@
         "Speaker": "William",
         "Text": " Great, thanks for the good work, finally! "
       },
-      { "Speaker": "*William player sentiment changes to +1*" }
+      { "Text": "*William player sentiment changes to +1*" }
     ],
     "Options": [
       {
-        "Text": "",
-        "NextDialogueId": "",
+        "Text": "Bye",
+        "NextDialogueId": "exit",
         "RequiredKeys": [ "" ],
-        "CreatedKeys": [ "" ]
-      },
-      {
-        "Text": "",
-        "NextDialogueId": "",
-        "RequiredKeys": [],
-        "CreatedKeys": []
+        "CreatedKeys": [ "william-invited" ]
       }
     ]
   },
@@ -125,6 +119,14 @@
       {
         "Speaker": "William",
         "Text": "If she will want to!"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [ "" ],
+        "CreatedKeys": [ "" ]
       }
     ]
   }

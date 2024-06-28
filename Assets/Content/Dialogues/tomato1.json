@@ -1,0 +1,42 @@
+[
+  {
+    "Key": "tomato-0",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "What's this?"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Grab item?",
+        "NextDialogueId": "tomato-1",
+        "RequiredKeys": [ "ingredient-hunt" ],
+        "CreatedKeys": [""]
+      },
+      {
+        "Text": "?",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "tomato-1",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Looks like I found the missing tomato. Who puts a tomato in their underwear drawer?"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Take tomato",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "ingredient-2" ]
+      }
+    ]
+  }
+]

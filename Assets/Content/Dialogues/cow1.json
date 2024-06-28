@@ -1,0 +1,42 @@
+[
+  {
+    "Key": "cow-0",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Hi Cow"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "What's this?",
+        "NextDialogueId": "cow-1",
+        "RequiredKeys": [ "ingredient-hunt" ],
+        "CreatedKeys": []
+      },
+      {
+        "Text": "Moo!",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "cow-1",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Looks like I found the missing beef. Those silly kids tried to put it back where it came from."
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Take beef",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "ingredient-1" ]
+      }
+    ]
+  }
+]

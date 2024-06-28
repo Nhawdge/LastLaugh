@@ -1,0 +1,42 @@
+[
+  {
+    "Key": "mushroom-0",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "What a lovely plant"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "What's this?",
+        "NextDialogueId": "mushroom-1",
+        "RequiredKeys": [ "ingredient-hunt" ],
+        "CreatedKeys": []
+      },
+      {
+        "Text": "Leave",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": []
+      }
+    ]
+  },
+  {
+    "Key": "mushroom-1",
+    "Lines": [
+      {
+        "Speaker": "Jane Foole",
+        "Text": "Looks like I found a replacement mushroom, Sure hope it's not poisonous"
+      }
+    ],
+    "Options": [
+      {
+        "Text": "Take mushroom",
+        "NextDialogueId": "exit",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "ingredient-3" ]
+      }
+    ]
+  }
+]

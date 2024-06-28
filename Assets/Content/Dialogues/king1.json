@@ -15,6 +15,12 @@
         "CreatedKeys": [ "" ]
       },
       {
+        "Text": "Let's start the party",
+        "NextDialogueId": "end-game",
+        "RequiredKeys": [],
+        "CreatedKeys": [ "" ]
+      },
+      {
         "Text": "Leave",
         "NextDialogueId": "exit",
         "RequiredKeys": [],

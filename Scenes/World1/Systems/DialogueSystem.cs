@@ -2,6 +2,7 @@
 using Arch.Core.Extensions;
 using LastLaugh.Extensions;
 using LastLaugh.Scenes.Components;
+using LastLaugh.Scenes.Ending;
 using LastLaugh.Scenes.World1.Data;
 using LastLaugh.Utilities;
 using System.Numerics;
@@ -118,6 +119,12 @@ namespace LastLaugh.Scenes.World1.Systems
                         if (key == "exit")
                         {
                             Singleton.Instance.ActiveDialogue = null;
+                        }
+                        else if (key == "end-game")
+                        {
+                            Singleton.Instance.ActiveDialogue = null;
+                            Singleton.Instance.ActiveDialogueIndex = 0;
+                            LastLaughEngine.Instance.ActiveScene = new EndScene();
                         }
                         else
                         {

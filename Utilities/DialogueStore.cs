@@ -8,6 +8,7 @@ namespace LastLaugh.Utilities
         internal Dictionary<string, TextureKey> PortraitKeyMap = new();
 
         internal Dictionary<string, DialogueData> Dialogues;
+        private List<string> UnlockedKeys = new();
 
         private DialogueStore()
         {
@@ -32,6 +33,7 @@ namespace LastLaugh.Utilities
             PortraitKeyMap.Add("king otto", TextureKey.PortraitKing);
             PortraitKeyMap.Add("random guard", TextureKey.PortraitGuard1);
             PortraitKeyMap.Add("cecily", TextureKey.PortraitCecily);
+            PortraitKeyMap.Add("william", TextureKey.PortraitWilliam);
             PortraitKeyMap.Add("gertrude", TextureKey.PortraitGertrude);
             PortraitKeyMap.Add("children", TextureKey.PortraitChildren);
         }
@@ -50,7 +52,6 @@ namespace LastLaugh.Utilities
             return Instance.Dialogues[id];
         }
 
-        private List<string> UnlockedKeys = new();
 
         internal void AddUnlockedKey(List<string> keys)
         {
@@ -81,7 +82,6 @@ namespace LastLaugh.Utilities
                     }
                     else
                     {
-
                         return UnlockedKeys.Contains(x);
                     }
                 });
