@@ -34,31 +34,26 @@ jobs:
       with:
         name: 'Last-Laugh-win-${{ github.ref_name }}.zip'
         path: 'Last-Laugh-win-${{ github.ref_name }}.zip'
-        retention-days: 1
+        retention-days: 1        
+  itch:
+     runs-on: ubuntu-latest    
+     environment: itch
+     needs: build
 
-   
-
-
-        
-#   itch:
-#     runs-on: ubuntu-latest    
-#     environment: itch
-#     needs: build
-
-#     steps:
-#     - name: Download a Build Artifact
-#       uses: actions/download-artifact@v2.1.1
-#       with:
-#         # Artifact name
-#         name: 'Last-Laugh-win-${{ github.ref_name }}.zip'
-#         path: 'Last-Laugh-win-${{ github.ref_name }}.zip'
-#     - name: Itch.io - Publish
-#       uses: KikimoraGames/itch-publish@v0.0.3
-#       with:
-#           butlerApiKey: ${{ secrets.BUTLER_CREDENTIALS }}
-#           gameData: 'Last-Laugh-win-${{ github.ref_name }}.zip'
-#           itchUsername: nhawdge
-#           itchGameId: Last-Laugh
-#           buildChannel: windows
-#           buildNumber: ${{ github.ref_name }}    
+     steps:
+     - name: Download a Build Artifact
+       uses: actions/download-artifact@v2.1.1
+       with:
+         # Artifact name
+         name: 'Last-Laugh-win-${{ github.ref_name }}.zip'
+         path: 'Last-Laugh-win-${{ github.ref_name }}.zip'
+     - name: Itch.io - Publish
+       uses: KikimoraGames/itch-publish@v0.0.3
+       with:
+           butlerApiKey: ${{ secrets.BUTLER_CREDENTIALS }}
+           gameData: 'Last-Laugh-win-${{ github.ref_name }}.zip'
+           itchUsername: nhawdge
+           itchGameId: the-last-laugh
+           buildChannel: windows
+           buildNumber: ${{ github.ref_name }}    
     
